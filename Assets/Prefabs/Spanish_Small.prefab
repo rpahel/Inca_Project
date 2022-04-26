@@ -144,10 +144,11 @@ MonoBehaviour:
   _jumpForce: 0
   _gForce: 0
   _stopDistance: 2
-  _damage: 0
-  _attackCd: 0
+  _damage: 1
+  _attackCd: 5
   _sweepStart: {fileID: 2916657133835236627}
   _sweepEnd: {fileID: 2916657133862257127}
+  _knockBack: 20
 --- !u!1 &2916657133835236636
 GameObject:
   m_ObjectHideFlags: 0

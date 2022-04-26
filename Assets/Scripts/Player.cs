@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public float _health;
+
     [Header("Movement")]
     public float _speed;
     public float _jumpForce;
     public float _gForce;
     private Rigidbody2D _rb;
     private Collider2D _collider;
+    private bool _knockBacked;
 
     [Header("Attack")]
     public float _damage;
@@ -48,7 +51,8 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        _rb.velocity = new Vector2(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y);
+        if(!_knockBacked)
+            _rb.velocity = new Vector2(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y);
 
         if (Input.GetAxis("Horizontal") < 0)
         {
@@ -99,5 +103,29 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(_attackCd);
         _canAttack = true;
         StopCoroutine(AttackCD());
+    }
+
+    public void OnDamage(float _damage, float _knockBack, Vector3 _enemyPos)
+    {
+        _health -= _damage;
+
+        Vector2 _toEnemy = (_enemyPos - transform.position).normalized;
+        _toEnemy = new Vector2(_toEnemy.x / Mathf.Abs(_toEnemy.x + Mathf.Epsilon), 0);
+
+        _knockBacked = true;
+        _rb.AddForce(-_toEnemy * _knockBack + Vector2.up * 5f, ForceMode2D.Impulse);
+        StartCoroutine(StopKnockBack());
+
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    IEnumerator StopKnockBack()
+    {
+        yield return new WaitForSeconds(.25f);
+        _knockBacked = false;
+        StopCoroutine(StopKnockBack());
     }
 }

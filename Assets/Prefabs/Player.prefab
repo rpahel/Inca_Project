@@ -138,12 +138,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b5eda2b981c58948b9c4b52bcc639ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _health: 100
   _speed: 10
   _jumpForce: 20
   _gForce: 5
   _damage: 25
-  _attackCd: 2
-  _knockBack: 10
+  _attackCd: 0.25
+  _knockBack: 20
   _sweepStart: {fileID: 2123061004695965589}
   _sweepEnd: {fileID: 2123061005520350676}
 --- !u!1 &2123061004695965590

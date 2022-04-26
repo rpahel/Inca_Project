@@ -23,12 +23,14 @@ public class Enemy : MonoBehaviour
     public float _damage;
     public float _attackCd;
     public Transform _sweepStart, _sweepEnd;
+    public float _knockBack;
     private bool _canAttack;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         //_collider = GetComponent<Collider2D>();
+        _canAttack = true;
     }
 
     private void Start()
@@ -41,6 +43,18 @@ public class Enemy : MonoBehaviour
     {
         UpdateDirection();
         Movement();
+
+        if (Mathf.Abs((_player.transform.position - gameObject.transform.position).x) <= _stopDistance)
+        {
+            if (_canAttack)
+            {
+                Attack();
+            }
+            else
+            {
+                //Debug.Log(gameObject.name + " is in Cooldown.");
+            }
+        }
     }
 
     private void UpdateDirection()
@@ -77,7 +91,6 @@ public class Enemy : MonoBehaviour
 
         if (!_isBig)
         {
-            Debug.Log(_toPlayer);
             _rb.AddForce(-_toPlayer * _knockBack + Vector2.up * 2, ForceMode2D.Impulse);
         }
 
@@ -85,5 +98,29 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    private void Attack()
+    {
+        Debug.DrawLine(_sweepStart.position, _sweepEnd.position, Color.red, 0.5f);
+        _canAttack = false;
+        StartCoroutine(AttackCD());
+
+        RaycastHit2D _hit = Physics2D.Linecast(_sweepStart.position, _sweepEnd.position);
+
+        if (_hit)
+        {
+            if (_hit.collider.gameObject.CompareTag("Player"))
+            {
+                _hit.collider.gameObject.GetComponent<Player>().OnDamage(_damage, _knockBack, transform.position);
+            }
+        }
+    }
+
+    IEnumerator AttackCD()
+    {
+        yield return new WaitForSeconds(_attackCd);
+        _canAttack = true;
+        StopCoroutine(AttackCD());
     }
 }
