@@ -747,8 +747,9 @@ MonoBehaviour:
   _jumpForce: 20
   _gForce: 5
   _damage: 0
-  _sweepStart: {fileID: 0}
-  _sweepEnd: {fileID: 0}
+  _attackCd: 2
+  _sweepStart: {fileID: 2143642710}
+  _sweepEnd: {fileID: 740312599}
 --- !u!1 &2143642709
 GameObject:
   m_ObjectHideFlags: 0

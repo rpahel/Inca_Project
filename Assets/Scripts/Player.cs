@@ -13,19 +13,35 @@ public class Player : MonoBehaviour
 
     [Header("Attack")]
     public float _damage;
+    public float _attackCd;
     public Transform _sweepStart, _sweepEnd;
+    private bool _canAttack;
 
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _rb.gravityScale = _gForce;
         _collider = GetComponent<Collider2D>();
+        _canAttack = true;
     }
 
     void Update()
     {
         Movement();
         Jump();
+
+        //Attack
+        if (Input.GetButtonDown("Attack"))
+        {
+            if (_canAttack)
+            {
+                Attack();
+            }
+            else
+            {
+                Debug.Log("You are in Cooldown.");
+            }
+        }
     }
 
     private void Movement()
@@ -58,5 +74,20 @@ public class Player : MonoBehaviour
                 Debug.Log("Je touche pas le sol.");
             }
         }
+    }
+
+    private void Attack()
+    {
+        Debug.DrawLine(_sweepStart.position, _sweepEnd.position, Color.red, 0.5f);
+        _canAttack = false;
+        StartCoroutine(AttackCD());
+        //Fonction d'attack ici
+    }
+
+    IEnumerator AttackCD()
+    {
+        yield return new WaitForSeconds(_attackCd);
+        _canAttack = true;
+        StopCoroutine(AttackCD());
     }
 }
