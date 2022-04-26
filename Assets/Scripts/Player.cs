@@ -14,6 +14,8 @@ public class Player : MonoBehaviour
     [Header("Attack")]
     public float _damage;
     public float _attackCd;
+    [Tooltip("Force du knockBack infligé aux ennemis.")]
+    public float _knockBack;
     public Transform _sweepStart, _sweepEnd;
     private bool _canAttack;
 
@@ -81,7 +83,15 @@ public class Player : MonoBehaviour
         Debug.DrawLine(_sweepStart.position, _sweepEnd.position, Color.red, 0.5f);
         _canAttack = false;
         StartCoroutine(AttackCD());
-        //Fonction d'attack ici
+
+        RaycastHit2D[] _hit = Physics2D.LinecastAll(_sweepStart.position, _sweepEnd.position);
+        for (int i = 0; i < _hit.Length; i++)
+        {
+            if (_hit[i].collider.gameObject.CompareTag("Enemy"))
+            {
+                _hit[i].collider.gameObject.GetComponent<Enemy>().OnDamage(_damage, _knockBack);
+            }
+        }
     }
 
     IEnumerator AttackCD()
