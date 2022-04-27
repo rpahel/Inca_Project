@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df78e75765ae69246a1f82b3cddec265, type: 3}
   m_Name: Fire Left Power
   m_EditorClassIdentifier: 
-  _powerType: 1
-  _heightScale: 1
+  _powerType: 2
+  _heightScale: 2
   _resistScale: 1
   _dmgScale: 1
   _knockBackForce: 1
