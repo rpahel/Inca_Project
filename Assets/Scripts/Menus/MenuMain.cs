@@ -34,20 +34,13 @@ public class MenuMain : MonoBehaviour
     {
         if (!_inOptions)
         {
-            if (Input.GetButtonDown("Horizontal"))
+            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q))
             {
-                Debug.Log("LOL");
-                Debug.Log(Input.GetAxisRaw("Horizontal"));
-                if (Input.GetAxis("Horizontal") < 0)
-                {
-                    SwitchButton(-1);
-                    Debug.Log("LEFT");
-                }
-                else if (Input.GetAxis("Horizontal") > 0)
-                {
-                    SwitchButton(1);
-                    Debug.Log("RIGHT");
-                }
+                SwitchButton(-1);
+            }
+            else if (Input.GetKeyDown(KeyCode.D))
+            {
+                SwitchButton(1);
             }
 
             if (Input.GetButtonDown("Attack"))
