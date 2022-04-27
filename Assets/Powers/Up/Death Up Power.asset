@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6e8d7ea7843fecd49a7c57b4c0ef1dc7, type: 3}
-  m_Name: Rock Up Power
+  m_Name: Death Up Power
   m_EditorClassIdentifier: 
-  _powerType: 1
-  _damage: 100
+  _powerType: 4
+  _damage: 300
   _cd: 10
