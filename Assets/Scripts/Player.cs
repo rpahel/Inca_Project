@@ -1,10 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Data;
 
 public class Player : MonoBehaviour
 {
     public float _health;
+    public PowerType _power;
+
+    public PowerLeft _powerLeft;
+    public PowerRight _powerRight;
+    public PowerUp _powerUp;
 
     [Header("Movement")]
     public float _speed;
