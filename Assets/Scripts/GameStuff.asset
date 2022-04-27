@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e16758adb98b1c49915384a22544d46, type: 3}
   m_Name: GameStuff
   m_EditorClassIdentifier: 
-  _powerManager: {fileID: 11400000, guid: 1b5c9f320295b124491ed1e56b7f1609, type: 2}
   _powerType: 0
+  _isPlayerDead: 0
+  _kidsKilled: 0
   _waves: []

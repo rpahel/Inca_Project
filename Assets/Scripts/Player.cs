@@ -28,7 +28,7 @@ public class Player : MonoBehaviour
     private bool _isJumping;
 
     [Header("Attack")]
-    public float _damage;
+    public float _baseDamage;
     public float _attackCd;
     [Tooltip("Force du knockBack infligé aux ennemis.")]
     public float _knockBack;
@@ -149,7 +149,7 @@ public class Player : MonoBehaviour
         {
             if (_hit[i].collider.gameObject.CompareTag("Enemy"))
             {
-                _hit[i].collider.gameObject.GetComponent<Enemy>().OnDamage(_damage, _knockBack);
+                _hit[i].collider.gameObject.GetComponent<Enemy>().OnDamage(_baseDamage, _knockBack);
             }
             else if (_hit[i].collider.gameObject.CompareTag("Kid"))
             {

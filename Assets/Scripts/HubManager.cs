@@ -11,6 +11,7 @@ public class HubManager : MonoBehaviour
     private void Awake()
     {
         _gameStuff._kidsKilled = 0;
+        _gameStuff._powerType = Data.PowerType.NONE;
     }
 
     public void KidKilled()
