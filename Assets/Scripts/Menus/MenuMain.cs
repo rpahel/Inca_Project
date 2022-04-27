@@ -81,7 +81,7 @@ public class MenuMain : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Test_Raphael");
+        SceneManager.LoadScene("Test_Raphael_1");
     }
 
     public void Options()

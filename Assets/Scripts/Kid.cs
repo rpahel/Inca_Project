@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Kid : MonoBehaviour
 {
-    public GameStuff _gameStuff;
+    private HubManager _hubManager;
 
     [Header("Movement")]
     private Rigidbody2D _rb;
@@ -24,6 +24,11 @@ public class Kid : MonoBehaviour
         _startPos = transform.position - new Vector3(_distance, 0, 0);
         _endPos = transform.position + new Vector3(_distance, 0, 0);
         _currentTarget = _startPos;
+    }
+
+    private void Start()
+    {
+        _hubManager = FindObjectOfType<HubManager>();
     }
 
     private void Update()
@@ -77,7 +82,7 @@ public class Kid : MonoBehaviour
             _isDead = true;
             _sprite.color = Color.red;
             transform.rotation = Quaternion.Euler(0, 0, 90f);
-            _gameStuff._kidsKilled++;
+            _hubManager.KidKilled();
         }
     }
 

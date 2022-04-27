@@ -59,17 +59,18 @@ public class Player : MonoBehaviour
         {
             _lastCoroutine = StartCoroutine(HoldingAttack());
             _itsHold = false;
+
+            if (_cadaver)
+            {
+                DropKid();
+            }
         }
 
         if (Input.GetButtonUp("Attack"))
         {
             StopCoroutine(_lastCoroutine);
 
-            if (_cadaver)
-            {
-                Debug.Log("Can't attack while carrying kid.");
-            }
-            else
+            if (!_cadaver)
             {
                 if (!_itsHold && _canAttack)
                 {
@@ -189,11 +190,16 @@ public class Player : MonoBehaviour
                 }
             }
         }
-        else if (_cadaver)
+    }
+
+    void DropKid()
+    {
+        if (_cadaver)
         {
             _cadaver.transform.parent = null;
             _cadaver.GetComponent<Rigidbody2D>().gravityScale = 1f;
             _cadaver.GetComponent<Rigidbody2D>().isKinematic = false;
+            _cadaver.GetComponent<Rigidbody2D>().velocity = _rb.velocity / 2f;
             _cadaver = null;
         }
     }
