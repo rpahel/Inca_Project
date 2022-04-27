@@ -145,7 +145,7 @@ MonoBehaviour:
   _gForce: 0
   _stopDistance: 2
   _damage: 1
-  _attackCd: 5
+  _attackCd: 3
   _sweepStart: {fileID: 2916657133835236627}
   _sweepEnd: {fileID: 2916657133862257127}
   _knockBack: 20
