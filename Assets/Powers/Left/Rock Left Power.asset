@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df78e75765ae69246a1f82b3cddec265, type: 3}
   m_Name: Rock Left Power
   m_EditorClassIdentifier: 
-  _powerType: 0
-  _heightScale: 2
-  _resistScale: 3
-  _dmgScale: 0
-  _knockBackForce: 0
+  _powerType: 1
+  _heightScale: 1
+  _resistScale: 1
+  _dmgScale: 1
+  _knockBackForce: 1
   _windForce: 0
-  _stunDuration: 0
-  _duration: 0
-  _cd: 0
+  _stunDuration: 2
+  _duration: 0.5
+  _cd: 6
   _potato: 0

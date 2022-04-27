@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a9d56da61425d543abedbcf0efbf597, type: 3}
   m_Name: Rock Right Power
   m_EditorClassIdentifier: 
-  _powerType: 0
-  _damage: 0
-  _range: 0
-  _cd: 0
+  _powerType: 1
+  _damage: 40
+  _range: 3
+  _cd: 3
