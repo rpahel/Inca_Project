@@ -6,8 +6,13 @@ using Data;
 public class Player : MonoBehaviour
 {
     public float _health;
-    public PowerType _power;
 
+    [Header("Managers")]
+    public GameStuff _gameStuff;
+    public PowerManager _powerManager;
+
+    [Header("Power")]
+    public PowerType _power;
     public PowerLeft _powerLeft;
     public PowerRight _powerRight;
     public PowerUp _powerUp;
@@ -36,6 +41,8 @@ public class Player : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _canAttack = true;
         _anim = GetComponent<Animator>();
+
+        //Attribuer les modifiers aux pouvoirs et faire les pouvoirs aussi ahah
     }
 
     void Update()
@@ -129,7 +136,7 @@ public class Player : MonoBehaviour
 
         if (_health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
     }
 
@@ -138,5 +145,10 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(.25f);
         _knockBacked = false;
         StopCoroutine(StopKnockBack());
+    }
+
+    void Die()
+    {
+        //Desactiver le collider, le rb, le script mais avant dire au gamemanager que c'est game over quoi 
     }
 }
