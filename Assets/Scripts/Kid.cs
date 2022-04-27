@@ -13,12 +13,14 @@ public class Kid : MonoBehaviour
     private Vector3 _startPos, _endPos, _currentTarget;
 
     private SpriteRenderer _sprite;
+    private Collider2D _collider;
     [HideInInspector] public bool _isDead;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
+        _collider = GetComponent<Collider2D>();
         _startPos = transform.position - new Vector3(_distance, 0, 0);
         _endPos = transform.position + new Vector3(_distance, 0, 0);
         _currentTarget = _startPos;
@@ -48,6 +50,22 @@ public class Kid : MonoBehaviour
             else if (transform.position.x >= _endPos.x)
             {
                 _currentTarget = _startPos;
+            }
+
+            RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center + Vector3.up * 0.1f, transform.right, _collider.bounds.extents.x + 0.01f);
+            if(_hit)
+            {
+                if (!_hit.collider.gameObject.CompareTag("Player"))
+                {
+                    if (_currentTarget == _endPos)
+                    {
+                        _currentTarget = _startPos;
+                    }
+                    else if (_currentTarget == _startPos)
+                    {
+                        _currentTarget = _endPos;
+                    }
+                }
             }
         }
     }

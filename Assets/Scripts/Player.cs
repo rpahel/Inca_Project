@@ -103,8 +103,6 @@ public class Player : MonoBehaviour
 
     private void Jump()
     {
-        Debug.DrawLine(_collider.bounds.center, _collider.bounds.center + Vector3.down * (_collider.bounds.extents.y + .01f), Color.red);
-
         RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y + .01f);
         if (_hit)
         {
