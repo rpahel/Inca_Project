@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D _rb;
     private Collider2D _collider;
     private bool _knockBacked;
+    private Animator _anim;
 
     [Header("Attack")]
     public float _damage;
@@ -28,6 +29,7 @@ public class Player : MonoBehaviour
         _rb.gravityScale = _gForce;
         _collider = GetComponent<Collider2D>();
         _canAttack = true;
+        _anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -51,8 +53,11 @@ public class Player : MonoBehaviour
 
     private void Movement()
     {
-        if(!_knockBacked)
+        if (!_knockBacked)
+        {
             _rb.velocity = new Vector2(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y);
+            _anim.SetFloat("Speed", Mathf.Abs(_rb.velocity.x));
+        }
 
         if (Input.GetAxis("Horizontal") < 0)
         {
