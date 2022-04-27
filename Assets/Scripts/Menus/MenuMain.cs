@@ -50,7 +50,7 @@ public class MenuMain : MonoBehaviour
         }
         else
         {
-            if (Input.GetButtonDown("Cancel"))
+            if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Attack"))
             {
                 _inOptions = false;
                 _settingsScreen.SetActive(false);

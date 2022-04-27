@@ -23,8 +23,9 @@ public class Player : MonoBehaviour
     public float _gForce;
     private Rigidbody2D _rb;
     private Collider2D _collider;
-    private bool _knockBacked;
     private Animator _anim;
+    private bool _knockBacked;
+    private bool _isJumping;
 
     [Header("Attack")]
     public float _damage;
@@ -69,7 +70,7 @@ public class Player : MonoBehaviour
         if (!_knockBacked)
         {
             _rb.velocity = new Vector2(Input.GetAxis("Horizontal") * _speed, _rb.velocity.y);
-            _anim.SetFloat("Speed", Mathf.Abs(_rb.velocity.x));
+            _anim.SetFloat("xSpeed", Mathf.Abs(_rb.velocity.x));
         }
 
         if (Input.GetAxis("Horizontal") < 0)
@@ -86,10 +87,19 @@ public class Player : MonoBehaviour
     {
         Debug.DrawLine(_collider.bounds.center, _collider.bounds.center + Vector3.down * (_collider.bounds.extents.y + .01f), Color.red);
 
+        RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y + .01f);
+        if (_hit)
+        {
+            _isJumping = false;
+        }
+        else
+        {
+            _isJumping = true;
+        }
+
         if (Input.GetButtonDown("Jump"))
         {
-            RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y + .01f);
-            if (_hit)
+            if (!_isJumping)
             {
                 _rb.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             }
@@ -98,12 +108,16 @@ public class Player : MonoBehaviour
                 Debug.Log("Je touche pas le sol.");
             }
         }
+
+        _anim.SetBool("isJumping", _isJumping);
+        _anim.SetFloat("ySpeed", _rb.velocity.y);
     }
 
     private void Attack()
     {
         Debug.DrawLine(_sweepStart.position, _sweepEnd.position, Color.red, 0.5f);
         _canAttack = false;
+        _anim.SetTrigger("Attack");
         StartCoroutine(AttackCD());
 
         RaycastHit2D[] _hit = Physics2D.LinecastAll(_sweepStart.position, _sweepEnd.position);
