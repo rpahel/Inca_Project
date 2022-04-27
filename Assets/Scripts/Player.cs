@@ -54,34 +54,7 @@ public class Player : MonoBehaviour
     {
         Movement();
         Jump();
-
-        if (Input.GetButtonDown("Attack"))
-        {
-            _lastCoroutine = StartCoroutine(HoldingAttack());
-            _itsHold = false;
-
-            if (_cadaver)
-            {
-                DropKid();
-            }
-        }
-
-        if (Input.GetButtonUp("Attack"))
-        {
-            StopCoroutine(_lastCoroutine);
-
-            if (!_cadaver)
-            {
-                if (!_itsHold && _canAttack)
-                {
-                    Attack();
-                }
-                else if (!_itsHold && !_canAttack)
-                {
-                    Debug.Log("You are in Cooldown.");
-                }
-            }
-        }
+        AttackCheck();
     }
 
     private void Movement()
@@ -128,6 +101,40 @@ public class Player : MonoBehaviour
 
         _anim.SetBool("isJumping", _isJumping);
         _anim.SetFloat("ySpeed", _rb.velocity.y);
+    }
+
+    void AttackCheck()
+    {
+        if (_isJumping)
+            return;
+
+        if (Input.GetButtonDown("Attack"))
+        {
+            _lastCoroutine = StartCoroutine(HoldingAttack());
+            _itsHold = false;
+
+            if (_cadaver)
+            {
+                DropKid();
+            }
+        }
+
+        if (Input.GetButtonUp("Attack"))
+        {
+            StopCoroutine(_lastCoroutine);
+
+            if (!_cadaver)
+            {
+                if (!_itsHold && _canAttack)
+                {
+                    Attack();
+                }
+                else if (!_itsHold && !_canAttack)
+                {
+                    Debug.Log("You are in Cooldown.");
+                }
+            }
+        }
     }
 
     private void Attack()
