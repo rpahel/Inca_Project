@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - Grid_Tile_Map
+  - Particles
   layers:
   - Default
   - TransparentFX
