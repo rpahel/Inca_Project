@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: df78e75765ae69246a1f82b3cddec265, type: 3}
-  m_Name: Fire Left Power
+  m_Name: Death Left Power
   m_EditorClassIdentifier: 
-  _powerType: 2
+  _powerType: 4
   _heightScale: 2
   _resistScale: 2
-  _dmgScale: 1
+  _dmgScale: 2
   _knockBackForce: 1
   _windForce: 0
-  _stunDuration: 0
-  _duration: 3
+  _stunDuration: 3
+  _duration: 0.5
   _cd: 6
   _potato: 0

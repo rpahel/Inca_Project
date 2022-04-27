@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Particles_system : MonoBehaviour
 {
-    [SerializeField] private GameObject _sfxBlood;
-
+    [SerializeField] private GameObject _sfxGameObject;
+    [SerializeField] private ParticleSystem _sfxParticleSystem;
 
     void OnParticleTrigger()
     {
@@ -26,7 +26,14 @@ public class Particles_system : MonoBehaviour
             Vector3 _newPos = new Vector3(p.position.x + transform.position.x, Random.Range(transform.position.y-0.5f, transform.position.y), 0);
             //Random.Range(-4f, -3f)
             Debug.Log(_newPos);
-            Instantiate(_sfxBlood, _newPos, Quaternion.Euler(0, 0, Random.Range(0, 90)));
+            if(_sfxGameObject != null)
+            {
+                Instantiate(_sfxGameObject, _newPos, Quaternion.Euler(0, 0, Random.Range(0, 90)));
+            }
+            if (_sfxParticleSystem != null)
+            {
+                Instantiate(_sfxParticleSystem, _newPos, Quaternion.Euler(0, 0, Random.Range(0, 90)));
+            }
         }
 
         // set
