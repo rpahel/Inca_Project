@@ -35,6 +35,10 @@ public class Player : MonoBehaviour
     public Transform _sweepStart, _sweepEnd;
     private bool _canAttack;
 
+    private GameObject _cadaver;
+    private bool _itsHold;
+    private Coroutine _lastCoroutine;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -42,7 +46,7 @@ public class Player : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _canAttack = true;
         _anim = GetComponent<Animator>();
-
+        _cadaver = null;
         //Attribuer les modifiers aux pouvoirs et faire les pouvoirs aussi ahah
     }
 
@@ -51,16 +55,30 @@ public class Player : MonoBehaviour
         Movement();
         Jump();
 
-        //Attack
         if (Input.GetButtonDown("Attack"))
         {
-            if (_canAttack)
+            _lastCoroutine = StartCoroutine(HoldingAttack());
+            _itsHold = false;
+        }
+
+        if (Input.GetButtonUp("Attack"))
+        {
+            StopCoroutine(_lastCoroutine);
+
+            if (_cadaver)
             {
-                Attack();
+                Debug.Log("Can't attack while carrying kid.");
             }
             else
             {
-                Debug.Log("You are in Cooldown.");
+                if (!_itsHold && _canAttack)
+                {
+                    Attack();
+                }
+                else if (!_itsHold && !_canAttack)
+                {
+                    Debug.Log("You are in Cooldown.");
+                }
             }
         }
     }
@@ -127,14 +145,11 @@ public class Player : MonoBehaviour
             {
                 _hit[i].collider.gameObject.GetComponent<Enemy>().OnDamage(_damage, _knockBack);
             }
+            else if (_hit[i].collider.gameObject.CompareTag("Kid"))
+            {
+                _hit[i].collider.gameObject.GetComponent<Kid>().OnDamage();
+            }
         }
-    }
-
-    IEnumerator AttackCD()
-    {
-        yield return new WaitForSeconds(_attackCd);
-        _canAttack = true;
-        StopCoroutine(AttackCD());
     }
 
     public void OnDamage(float _damage, float _knockBack, Vector3 _enemyPos)
@@ -154,6 +169,44 @@ public class Player : MonoBehaviour
         }
     }
 
+    void Die()
+    {
+        //Desactiver le collider, le rb, le script mais avant dire au gamemanager que c'est game over quoi 
+    }
+
+    void PickUpKid()
+    {
+        if (!_cadaver)
+        {
+            RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center + Vector3.up * _collider.bounds.extents.y, Vector2.down, _collider.bounds.extents.y * 2);
+            if (_hit && _hit.collider.gameObject.CompareTag("Kid"))
+            {
+                if (_hit.collider.gameObject.GetComponent<Kid>()._isDead)
+                {
+                    _cadaver = _hit.collider.gameObject;
+                    _cadaver.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x);
+                    _cadaver.transform.parent = transform;
+                    _cadaver.GetComponent<Rigidbody2D>().gravityScale = 0f;
+                    _cadaver.GetComponent<Rigidbody2D>().isKinematic = true;
+                }
+            }
+        }
+        else if (_cadaver)
+        {
+            _cadaver.transform.parent = null;
+            _cadaver.GetComponent<Rigidbody2D>().gravityScale = 1f;
+            _cadaver.GetComponent<Rigidbody2D>().isKinematic = false;
+            _cadaver = null;
+        }
+    }
+
+    IEnumerator AttackCD()
+    {
+        yield return new WaitForSeconds(_attackCd);
+        _canAttack = true;
+        StopCoroutine(AttackCD());
+    }
+
     IEnumerator StopKnockBack()
     {
         yield return new WaitForSeconds(.25f);
@@ -161,8 +214,10 @@ public class Player : MonoBehaviour
         StopCoroutine(StopKnockBack());
     }
 
-    void Die()
+    IEnumerator HoldingAttack()
     {
-        //Desactiver le collider, le rb, le script mais avant dire au gamemanager que c'est game over quoi 
+        yield return new WaitForSecondsRealtime(.5f);
+        _itsHold = true;
+        PickUpKid();
     }
 }

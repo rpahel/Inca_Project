@@ -7,14 +7,15 @@ TagManager:
   - Enemy
   - Grid_Tile_Map
   - Particles
+  - Kid
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Kid
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

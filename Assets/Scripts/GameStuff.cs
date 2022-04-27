@@ -9,6 +9,7 @@ public class GameStuff : ScriptableObject
     public PowerType _powerType;
     [HideInInspector]
     public bool _isPlayerDead;
+    public int _kidsKilled;
 
     [Header("Waves")]
     public Wave[] _waves;
