@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Data;
 
 public class Enemy : MonoBehaviour
 {
     [Tooltip("Est-ce que c'est un gros ennemi ?")]
     public bool _isBig;
     public float _health;
+    public PowerType _resist;
 
     [Header("Movement")]
     public float _speed;
