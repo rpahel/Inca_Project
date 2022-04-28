@@ -113,6 +113,7 @@ public class Player : MonoBehaviour
             if (_holdedObject)
             {
                 DropKid();
+                _forDrop = true;
             }
         }
 
@@ -123,12 +124,6 @@ public class Player : MonoBehaviour
         {
             _lastCoroutine = StartCoroutine(HoldingAttack());
             _itsHold = false;
-
-            if (_holdedObject)
-            {
-                DropKid();
-                _forDrop = true;
-            }
         }
 
         if (Input.GetButtonUp("Attack"))
@@ -147,10 +142,10 @@ public class Player : MonoBehaviour
                     {
                         Debug.Log("You are in Cooldown.");
                     }
-
-                    _forDrop=false;
                 }
             }
+
+           _forDrop = false;
         }
     }
 
@@ -214,7 +209,7 @@ public class Player : MonoBehaviour
             }
             else if(!_hit || !_hit.collider.gameObject.CompareTag("Kid"))
             {
-                _hit = Physics2D.Raycast(_collider.bounds.center, transform.right, _collider.bounds.extents.x * 4);
+                _hit = Physics2D.Raycast(_collider.bounds.center + -transform.right * (_collider.bounds.extents.x - 0.01f), transform.right, _collider.bounds.extents.x * 4);
                 if (_hit && _hit.collider.gameObject.CompareTag("Kid"))
                 {
                     _holdedObject = _hit.collider.gameObject;
@@ -239,7 +234,6 @@ public class Player : MonoBehaviour
                 _holdedObject = null;
                 _gameStuff._kidsBuried++;
                 _grave.GetComponent<Grave>().Bury();
-                _forDrop = false;
             }
         }
         else if (_holdedObject)
