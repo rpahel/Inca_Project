@@ -16,7 +16,7 @@ public class GameStuff : ScriptableObject
     [Header("Kids Stuff")]
     public GameObject _kid;
     public int _baseNbOfKids;
-    [HideInInspector]
+    //[HideInInspector]
     public int _kidsKilled;
 
     [Header("Waves")]
