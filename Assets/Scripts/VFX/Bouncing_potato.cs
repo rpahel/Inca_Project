@@ -13,9 +13,10 @@ public class Bouncing_potato : MonoBehaviour
     IEnumerator Explosion()
     {
         yield return new WaitForSeconds((float)_ExplosionDelay);
+        int chiffre = Random.Range(0, 90);
         for(int i = 0; i < 4; i++)
         {
-            GameObject _lilPotato = Instantiate(_petitePatate, transform.position, Quaternion.Euler(0, 0, 45 + (90 * i)));
+            GameObject _lilPotato = Instantiate(_petitePatate, transform.position, Quaternion.Euler(0, 0, chiffre + (90 * i)));
             Destroy(gameObject);
         }
     }
