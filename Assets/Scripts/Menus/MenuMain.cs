@@ -13,6 +13,8 @@ public class MenuMain : MonoBehaviour
     private GameObject _selectedButton;
     private int _selectedButtonIndex;
     private bool _inOptions;
+    private bool _playSelected;
+    private float _time;
 
     private void Start()
     {
@@ -28,36 +30,50 @@ public class MenuMain : MonoBehaviour
         {
             _buttons[i].SetActive(false);
         }
+
+        _time = 0;
     }
 
     private void Update()
     {
-        if (!_inOptions)
+        if (!_playSelected)
         {
-            if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q))
+            if (!_inOptions)
             {
-                SwitchButton(-1);
-            }
-            else if (Input.GetKeyDown(KeyCode.D))
-            {
-                SwitchButton(1);
-            }
+                if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.Q))
+                {
+                    SwitchButton(-1);
+                }
+                else if (Input.GetKeyDown(KeyCode.D))
+                {
+                    SwitchButton(1);
+                }
 
-            if (Input.GetButtonDown("Attack"))
+                if (Input.GetButtonDown("Attack"))
+                {
+                    _selectedButton.GetComponent<Button>().onClick.Invoke();
+                }
+            }
+            else
             {
-                _selectedButton.GetComponent<Button>().onClick.Invoke();
+                if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Attack"))
+                {
+                    _inOptions = false;
+                    _settingsScreen.SetActive(false);
+                    _buttonsScreen.SetActive(true);
+                }
+
+                _volumeSlider.value += Input.GetAxis("Horizontal") * Time.deltaTime;
             }
         }
         else
         {
-            if (Input.GetButtonDown("Cancel") || Input.GetButtonDown("Attack"))
+            _time += Time.deltaTime;
+            _buttons[0].GetComponent<RectTransform>().position += new Vector3(0, (_time * _time) / 20f, 0);
+            if(_buttons[0].GetComponent<RectTransform>().position.y >= 800f)
             {
-                _inOptions = false;
-                _settingsScreen.SetActive(false);
-                _buttonsScreen.SetActive(true);
+                SceneManager.LoadScene("Test_Raphael_1");
             }
-
-            _volumeSlider.value += Input.GetAxis("Horizontal") * Time.deltaTime;
         }
     }
 
@@ -81,7 +97,7 @@ public class MenuMain : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Test_Raphael_1");
+        _playSelected = true;
     }
 
     public void Options()
