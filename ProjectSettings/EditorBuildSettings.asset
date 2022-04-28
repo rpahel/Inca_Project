@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Menu_Main.unity
     guid: 6588639aac8050b4ab681be50c2ac8b9
   - enabled: 1
-    path: Assets/Scenes/Test_Raphael_1.unity
-    guid: 5735cc557f4bcdc4c9fe2505e794828e
+    path: Assets/Scenes/Hub_Scene.unity
+    guid: 81c9e7a3eb386674c8f2bd427431026f
+  - enabled: 1
+    path: Assets/Scenes/Fight_Scene.unity
+    guid: ed2f71ac83922db4ca796bfc2d5e6727
   m_configObjects: {}
