@@ -20,7 +20,7 @@ public class Player : MonoBehaviour
     [Header("Movement")]
     public float _speed;
     public float _jumpForce;
-    public float _gForce;
+    public float _gScale;
     private Rigidbody2D _rb;
     private Collider2D _collider;
     private Animator _anim;
@@ -42,7 +42,7 @@ public class Player : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        _rb.gravityScale = _gForce;
+        _rb.gravityScale = _gScale;
         _collider = GetComponent<Collider2D>();
         _canAttack = true;
         _anim = GetComponent<Animator>();
@@ -105,8 +105,16 @@ public class Player : MonoBehaviour
 
     void AttackCheck()
     {
+        if (Input.GetButtonDown("Attack"))
+        {
+            if (_cadaver)
+            {
+                DropKid();
+            }
+        }
+
         if (_isJumping)
-            return;
+        return;
 
         if (Input.GetButtonDown("Attack"))
         {
@@ -190,7 +198,7 @@ public class Player : MonoBehaviour
                 if (_hit.collider.gameObject.GetComponent<Kid>()._isDead)
                 {
                     _cadaver = _hit.collider.gameObject;
-                    _cadaver.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x);
+                    _cadaver.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x) + new Vector3(0,0, _cadaver.transform.position.z);
                     _cadaver.transform.parent = transform;
                     _cadaver.GetComponent<Rigidbody2D>().gravityScale = 0f;
                     _cadaver.GetComponent<Rigidbody2D>().isKinematic = true;

@@ -12,8 +12,7 @@ public class Enemy : MonoBehaviour
 
     [Header("Movement")]
     public float _speed;
-    public float _jumpForce;
-    public float _gForce;
+    public float _gScale;
     [Tooltip("Distance d'arrêt par rapport au joueur.")]
     public float _stopDistance;
     private Rigidbody2D _rb;
