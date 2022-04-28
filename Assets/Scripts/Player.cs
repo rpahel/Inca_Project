@@ -146,6 +146,7 @@ public class Player : MonoBehaviour
                     {
                         Debug.Log("You are in Cooldown.");
                     }
+
                     _forDrop=false;
                 }
             }
