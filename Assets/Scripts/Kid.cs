@@ -12,9 +12,14 @@ public class Kid : MonoBehaviour
     public float _speed;
     public float _distance;
     private Vector3 _startPos, _endPos, _currentTarget;
+    [HideInInspector] public bool _isHeld;
 
-    private SpriteRenderer _sprite;
+    [Header("Gender")]
+    private bool _isGirl;
+    public Sprite _girlHeadSprite;
+
     private Collider2D _collider;
+    private Animator _animator;
     [HideInInspector] public bool _isDead;
 
     private void Awake()
@@ -25,11 +30,22 @@ public class Kid : MonoBehaviour
         }
 
         _rb = GetComponent<Rigidbody2D>();
-        _sprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _startPos = transform.position - new Vector3(_distance, 0, 0);
         _endPos = transform.position + new Vector3(_distance, 0, 0);
         _currentTarget = _startPos;
+
+        int a = Random.Range(0, 2);
+        if(a == 0)
+        {
+            _isGirl = false;
+        }
+        else
+        {
+            _isGirl = true;
+        }
+        _animator.SetBool("isGirl", _isGirl);
     }
 
     private void Start()
@@ -39,7 +55,7 @@ public class Kid : MonoBehaviour
 
     private void Update()
     {
-        if (!_isDead)
+        if (!_isDead && !_isHeld)
         {
             Vector2 _toTarget = (transform.position - _currentTarget).normalized;
             _toTarget = new Vector2(-_toTarget.x / Mathf.Abs(_toTarget.x + Mathf.Epsilon), 0);
@@ -51,7 +67,7 @@ public class Kid : MonoBehaviour
             }
             else if (_toTarget.x < 0)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 180);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
             if (transform.position.x <= _startPos.x)
@@ -66,7 +82,7 @@ public class Kid : MonoBehaviour
             RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center + Vector3.up * 0.1f, transform.right, _collider.bounds.extents.x + 0.01f);
             if(_hit)
             {
-                if (!_hit.collider.gameObject.CompareTag("Player"))
+                if (!_hit.collider.gameObject.CompareTag("Player") && !_hit.collider.gameObject.CompareTag("Kid"))
                 {
                     if (_currentTarget == _endPos)
                     {
@@ -86,15 +102,19 @@ public class Kid : MonoBehaviour
         if (!_isDead)
         {
             _isDead = true;
-            _sprite.color = Color.red;
             GameObject _head = Instantiate(_kidHead, _collider.bounds.center + Vector3.up * _collider.bounds.extents.y, Quaternion.identity);
+            
+            if(_isGirl)
+                _head.GetComponent<SpriteRenderer>().sprite = _girlHeadSprite;
+            
             Rigidbody2D _headRb = _head.GetComponent<Rigidbody2D>();
             _headRb.velocity = _rb.velocity + Vector2.up * 3f;
             _headRb.angularVelocity = 180f;
             Destroy(_head, 3f);
 
-            transform.rotation = Quaternion.Euler(0, 0, 90f);
+            //transform.rotation = Quaternion.Euler(0, 0, 90f);
             _hubManager.KidKilled();
+            _animator.SetTrigger("Die");
         }
     }
 

@@ -35,9 +35,11 @@ public class Player : MonoBehaviour
     public Transform _sweepStart, _sweepEnd;
     private bool _canAttack;
 
-    private GameObject _cadaver;
+    [Header("Holding Kids")]
+    private GameObject _holdedObject;
     private bool _itsHold;
     private Coroutine _lastCoroutine;
+    private bool _forDrop;
 
     void Awake()
     {
@@ -46,7 +48,7 @@ public class Player : MonoBehaviour
         _collider = GetComponent<Collider2D>();
         _canAttack = true;
         _anim = GetComponent<Animator>();
-        _cadaver = null;
+        _holdedObject = null;
         //Attribuer les modifiers aux pouvoirs et faire les pouvoirs aussi ahah
     }
 
@@ -107,7 +109,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack"))
         {
-            if (_cadaver)
+            if (_holdedObject)
             {
                 DropKid();
             }
@@ -121,9 +123,10 @@ public class Player : MonoBehaviour
             _lastCoroutine = StartCoroutine(HoldingAttack());
             _itsHold = false;
 
-            if (_cadaver)
+            if (_holdedObject)
             {
                 DropKid();
+                _forDrop = true;
             }
         }
 
@@ -131,15 +134,20 @@ public class Player : MonoBehaviour
         {
             StopCoroutine(_lastCoroutine);
 
-            if (!_cadaver)
+            if (!_holdedObject)
             {
-                if (!_itsHold && _canAttack)
+                if (!_forDrop)
                 {
-                    Attack();
-                }
-                else if (!_itsHold && !_canAttack)
-                {
-                    Debug.Log("You are in Cooldown.");
+                    if (!_itsHold && _canAttack)
+                    {
+                        Attack();
+                    }
+                    else if (!_itsHold && !_canAttack)
+                    {
+                        Debug.Log("You are in Cooldown.");
+                    }
+
+                    _forDrop=false;
                 }
             }
         }
@@ -190,18 +198,31 @@ public class Player : MonoBehaviour
 
     void PickUpKid()
     {
-        if (!_cadaver)
+        if (!_holdedObject)
         {
-            RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center + Vector3.up * _collider.bounds.extents.y, Vector2.down, _collider.bounds.extents.y * 2);
+            RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y);
             if (_hit && _hit.collider.gameObject.CompareTag("Kid"))
             {
-                if (_hit.collider.gameObject.GetComponent<Kid>()._isDead)
+                _holdedObject = _hit.collider.gameObject;
+                _holdedObject.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x) + new Vector3(0,0, _holdedObject.transform.position.z);
+                _holdedObject.transform.parent = transform;
+                _holdedObject.GetComponent<Kid>()._isHeld = true;
+                _holdedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                _holdedObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
+                _holdedObject.GetComponent<Rigidbody2D>().isKinematic = true;
+            }
+            else if(!_hit || !_hit.collider.gameObject.CompareTag("Kid"))
+            {
+                _hit = Physics2D.Raycast(_collider.bounds.center, transform.right, _collider.bounds.extents.x * 4);
+                if (_hit && _hit.collider.gameObject.CompareTag("Kid"))
                 {
-                    _cadaver = _hit.collider.gameObject;
-                    _cadaver.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x) + new Vector3(0,0, _cadaver.transform.position.z);
-                    _cadaver.transform.parent = transform;
-                    _cadaver.GetComponent<Rigidbody2D>().gravityScale = 0f;
-                    _cadaver.GetComponent<Rigidbody2D>().isKinematic = true;
+                    _holdedObject = _hit.collider.gameObject;
+                    _holdedObject.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x) + new Vector3(0, 0, _holdedObject.transform.position.z);
+                    _holdedObject.transform.parent = transform;
+                    _holdedObject.GetComponent<Kid>()._isHeld = true;
+                    _holdedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                    _holdedObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
+                    _holdedObject.GetComponent<Rigidbody2D>().isKinematic = true;
                 }
             }
         }
@@ -209,13 +230,14 @@ public class Player : MonoBehaviour
 
     void DropKid()
     {
-        if (_cadaver)
+        if (_holdedObject)
         {
-            _cadaver.transform.parent = null;
-            _cadaver.GetComponent<Rigidbody2D>().gravityScale = 1f;
-            _cadaver.GetComponent<Rigidbody2D>().isKinematic = false;
-            _cadaver.GetComponent<Rigidbody2D>().velocity = _rb.velocity / 2f;
-            _cadaver = null;
+            _holdedObject.transform.parent = null;
+            _holdedObject.GetComponent<Kid>()._isHeld = false;
+            _holdedObject.GetComponent<Rigidbody2D>().gravityScale = 2f;
+            _holdedObject.GetComponent<Rigidbody2D>().isKinematic = false;
+            _holdedObject.GetComponent<Rigidbody2D>().velocity = _rb.velocity;
+            _holdedObject = null;
         }
     }
 
