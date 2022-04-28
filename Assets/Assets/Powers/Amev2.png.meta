@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c73c8fcd87dc6a64493a231fad53a88d
+guid: c7fa1582b96f58245908737a3ce47cdc
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: espagnol_faible_marche_0
+      name: Amev2_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 10
-        width: 43
-        height: 40
+        x: 0
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e01c112d29ca2fc4a83d7c3c4d934aa8
-      internalID: -1046098414
+      spriteID: 51257f6d35560044ab3baa09ba4d3fe7
+      internalID: 169997387
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_1
+      name: Amev2_1
       rect:
         serializedVersion: 2
-        x: 78
-        y: 10
-        width: 43
-        height: 40
+        x: 64
+        y: 64
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fb6bdf8ee53878449d6c046b4323ccb
-      internalID: 866289599
+      spriteID: af0e928bab7ea6a42908a6b63b0eabf2
+      internalID: -86727935
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_2
+      name: Amev2_2
       rect:
         serializedVersion: 2
-        x: 142
-        y: 10
-        width: 43
-        height: 40
+        x: 0
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1790521794ff8a44c94aa768b6c0b3d9
-      internalID: 2044376179
+      spriteID: 1d83db407dab3fc49b7705e573fdf55e
+      internalID: 469748232
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_3
+      name: Amev2_3
       rect:
         serializedVersion: 2
-        x: 206
-        y: 10
-        width: 43
-        height: 40
+        x: 64
+        y: 0
+        width: 64
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,50 +181,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d532e6b769c9b44189c741f60389463
-      internalID: 285415057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: espagnol_faible_marche_4
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 10
-        width: 43
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3fdb6a30e4edf094891828d6be5abd0c
-      internalID: -499861934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: espagnol_faible_marche_5
-      rect:
-        serializedVersion: 2
-        x: 334
-        y: 10
-        width: 43
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 649f659844afdb34395bb5cb1a1f38a3
-      internalID: 1550863548
+      spriteID: 3f1b002b437e26c4cbbe05d132049bbc
+      internalID: -1329230116
       vertices: []
       indices: 
       edges: []
@@ -240,12 +198,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      espagnol_faible_marche_5: 1550863548
-      espagnol_faible_marche_0: -1046098414
-      espagnol_faible_marche_1: 866289599
-      espagnol_faible_marche_2: 2044376179
-      espagnol_faible_marche_3: 285415057
-      espagnol_faible_marche_4: -499861934
+      Amev2_2: 469748232
+      Amev2_0: 169997387
+      Amev2_1: -86727935
+      Amev2_3: -1329230116
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

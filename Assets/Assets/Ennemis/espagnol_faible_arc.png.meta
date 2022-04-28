@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c73c8fcd87dc6a64493a231fad53a88d
+guid: 3a20401e358c8c2428105f57db441e0e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 512
+    maxTextureSize: 256
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -104,127 +104,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: espagnol_faible_marche_0
+      name: espagnol_faible_arc_0
       rect:
         serializedVersion: 2
-        x: 14
-        y: 10
-        width: 43
+        x: 4
+        y: 12
+        width: 45
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e01c112d29ca2fc4a83d7c3c4d934aa8
-      internalID: -1046098414
+      spriteID: abcc6434a88df7d4a917528140960fda
+      internalID: 649956638
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_1
+      name: espagnol_faible_arc_1
       rect:
         serializedVersion: 2
-        x: 78
-        y: 10
-        width: 43
+        x: 68
+        y: 12
+        width: 45
         height: 40
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fb6bdf8ee53878449d6c046b4323ccb
-      internalID: 866289599
+      spriteID: 96315fb5b7bb5984091bc687a45d5d31
+      internalID: -782090300
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_2
+      name: espagnol_faible_arc_2
       rect:
         serializedVersion: 2
-        x: 142
-        y: 10
-        width: 43
+        x: 132
+        y: 12
+        width: 40
         height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: 0.558997, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1790521794ff8a44c94aa768b6c0b3d9
-      internalID: 2044376179
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: espagnol_faible_marche_3
-      rect:
-        serializedVersion: 2
-        x: 206
-        y: 10
-        width: 43
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d532e6b769c9b44189c741f60389463
-      internalID: 285415057
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: espagnol_faible_marche_4
-      rect:
-        serializedVersion: 2
-        x: 270
-        y: 10
-        width: 43
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3fdb6a30e4edf094891828d6be5abd0c
-      internalID: -499861934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: espagnol_faible_marche_5
-      rect:
-        serializedVersion: 2
-        x: 334
-        y: 10
-        width: 43
-        height: 40
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 649f659844afdb34395bb5cb1a1f38a3
-      internalID: 1550863548
+      spriteID: 69b8de9dbf7502a46b0adccfc8688eff
+      internalID: -1030452953
       vertices: []
       indices: 
       edges: []
@@ -240,12 +177,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      espagnol_faible_marche_5: 1550863548
-      espagnol_faible_marche_0: -1046098414
-      espagnol_faible_marche_1: 866289599
-      espagnol_faible_marche_2: 2044376179
-      espagnol_faible_marche_3: 285415057
-      espagnol_faible_marche_4: -499861934
+      espagnol_faible_arc_2: -1030452953
+      espagnol_faible_arc_0: 649956638
+      espagnol_faible_arc_1: -782090300
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

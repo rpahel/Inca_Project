@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c73c8fcd87dc6a64493a231fad53a88d
+guid: 9a24579d442103a4ab6d427b402dbe78
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,13 +104,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: espagnol_faible_marche_0
+      name: chevalier_espagnol_walk_0
       rect:
         serializedVersion: 2
-        x: 14
+        x: 11
         y: 10
-        width: 43
-        height: 40
+        width: 48
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,20 +118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e01c112d29ca2fc4a83d7c3c4d934aa8
-      internalID: -1046098414
+      spriteID: c5564b3b4f891324d9ffe375f447ce51
+      internalID: -1975882898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_1
+      name: chevalier_espagnol_walk_1
       rect:
         serializedVersion: 2
-        x: 78
+        x: 75
         y: 10
-        width: 43
-        height: 40
+        width: 48
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -139,20 +139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6fb6bdf8ee53878449d6c046b4323ccb
-      internalID: 866289599
+      spriteID: c7eac70d0b427db46a51a81fdf86cee5
+      internalID: 597593503
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_2
+      name: chevalier_espagnol_walk_2
       rect:
         serializedVersion: 2
-        x: 142
+        x: 139
         y: 10
-        width: 43
-        height: 40
+        width: 48
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,20 +160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1790521794ff8a44c94aa768b6c0b3d9
-      internalID: 2044376179
+      spriteID: 9dbb24a6e2a5a53429a24e87836a8e7d
+      internalID: -1631407327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_3
+      name: chevalier_espagnol_walk_3
       rect:
         serializedVersion: 2
-        x: 206
+        x: 203
         y: 10
-        width: 43
-        height: 40
+        width: 48
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -181,20 +181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d532e6b769c9b44189c741f60389463
-      internalID: 285415057
+      spriteID: cbc1293e648a96d46a7eef4ce673ea9f
+      internalID: -1579798534
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_4
+      name: chevalier_espagnol_walk_4
       rect:
         serializedVersion: 2
-        x: 270
+        x: 267
         y: 10
-        width: 43
-        height: 40
+        width: 48
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -202,20 +202,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3fdb6a30e4edf094891828d6be5abd0c
-      internalID: -499861934
+      spriteID: e975e4c75a488784dacd2974933443d1
+      internalID: -579583141
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: espagnol_faible_marche_5
+      name: chevalier_espagnol_walk_5
       rect:
         serializedVersion: 2
-        x: 334
+        x: 331
         y: 10
-        width: 43
-        height: 40
+        width: 48
+        height: 42
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -223,8 +223,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 649f659844afdb34395bb5cb1a1f38a3
-      internalID: 1550863548
+      spriteID: d46b49cf86d096c4089a7d4d4d609757
+      internalID: -476167427
       vertices: []
       indices: 
       edges: []
@@ -240,12 +240,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      espagnol_faible_marche_5: 1550863548
-      espagnol_faible_marche_0: -1046098414
-      espagnol_faible_marche_1: 866289599
-      espagnol_faible_marche_2: 2044376179
-      espagnol_faible_marche_3: 285415057
-      espagnol_faible_marche_4: -499861934
+      chevalier_espagnol_walk_4: -579583141
+      chevalier_espagnol_walk_3: -1579798534
+      chevalier_espagnol_walk_5: -476167427
+      chevalier_espagnol_walk_2: -1631407327
+      chevalier_espagnol_walk_1: 597593503
+      chevalier_espagnol_walk_0: -1975882898
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
