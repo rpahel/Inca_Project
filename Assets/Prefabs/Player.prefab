@@ -169,7 +169,7 @@ MonoBehaviour:
   _speed: 10
   _jumpForce: 20
   _gForce: 5
-  _damage: 25
+  _baseDamage: 0
   _attackCd: 0.25
   _knockBack: 20
   _sweepStart: {fileID: 2123061004695965589}
@@ -198,7 +198,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123061004695965590}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.185, y: 0.653, z: 0}
+  m_LocalPosition: {x: 1.26, y: 0.653, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -229,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2123061005520350677}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.93, y: -0.838, z: 0}
+  m_LocalPosition: {x: 0.71, y: -0.838, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
