@@ -29,6 +29,7 @@ public class HubManager : MonoBehaviour
         }
 
         _gameStuff._kidsKilled = 0;
+        _gameStuff._kidsBuried = 0;
         _gameStuff._powerType = Data.PowerType.NONE;
 
         _spawnStart = transform.position - new Vector3(_spawnRange, 0, 0);
