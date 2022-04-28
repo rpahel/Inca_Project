@@ -10,6 +10,7 @@ public class FightManager : MonoBehaviour
     [Header("Enemies Stuff")]
     public float _spawnRange;
     private GameObject[] _enemies;
+    [SerializeField]
     private List<GameObject> _activeEnemies = new List<GameObject>();
     private PowerType _resistance;
     private Vector2 _spawnStart;
@@ -29,13 +30,63 @@ public class FightManager : MonoBehaviour
         {
             GameObject _newEnemy = Instantiate(_enemies[i], new Vector3(_spawnStart.x + ((_spawnRange * 2) * i) / (float)_enemies.Length, 0, 1), Quaternion.identity);
             _newEnemy.GetComponent<Enemy>()._resist = _resistance;
+            _newEnemy.GetComponent<Enemy>()._fightManager = this;
             _activeEnemies.Add(_newEnemy);
         }
     }
 
-    public void EnemyKilled()
+    public void EnemyKilled(GameObject _enemy)
     {
+        _activeEnemies.Remove(_enemy);
+        Destroy(_enemy);
         _gameStuff._spanishKilled++;
+    }
+
+    public void UseUpPower(float _damage, PowerType _power)
+    {
+        // Fait crash unity
+
+        //int count = _activeEnemies.Count;
+        //
+        //for (int i = 0; i < count;)
+        //{
+        //    if(_activeEnemies[i].GetComponent<Enemy>()._resist == _power)
+        //    {
+        //        if(_activeEnemies[i].GetComponent<Enemy>()._health - (_damage - _damage * (_activeEnemies[i].GetComponent<Enemy>()._resistPercent / 100f)) > 0)
+        //        {
+        //            i++;
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (_activeEnemies[i].GetComponent<Enemy>()._health - _damage > 0)
+        //        {
+        //            i++;
+        //        }
+        //    }
+        //
+        //    _activeEnemies[i].GetComponent<Enemy>().OnPowerDamage(_damage, 0, _power);
+        //}
+    }
+
+    public void UseRightPower(float _damage, float _range, PowerType _power)
+    {
+
+    }
+
+    public void Stun(float stunDuration)
+    {
+
+    }
+
+    public void Potato(float duration)
+    {
+
+    }
+
+    public void Wind(float force, float duration)
+    {
+
     }
 
     private void OnDrawGizmosSelected()

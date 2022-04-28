@@ -10,7 +10,7 @@ public class GameStuff : ScriptableObject
 
     [HideInInspector]
     public bool _isPlayerDead;
-    [HideInInspector]
+    //[HideInInspector]
     public int _spanishKilled;
 
     [Header("Kids Stuff")]

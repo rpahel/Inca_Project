@@ -10,12 +10,19 @@ public class Player : MonoBehaviour
     [Header("Managers")]
     public GameStuff _gameStuff;
     public PowerManager _powerManager;
+    public HubManager _hubManager;
+    public FightManager _fightManager;
 
     [Header("Power")]
     public PowerType _power;
     public PowerLeft _powerLeft;
     public PowerRight _powerRight;
     public PowerUp _powerUp;
+    private float _resistance;
+    private float _leftPowerCD;
+    private float _rightPowerCD;
+    private float _upPowerCD;
+    private float _leftPowerDuration;
 
     [Header("Movement")]
     public float _speed;
@@ -42,6 +49,12 @@ public class Player : MonoBehaviour
     private bool _forDrop;
     private GameObject _grave;
 
+    [Header("Original Values")]
+    private Vector3 _iniScale;
+    private float _iniResistance;
+    private float _iniBaseDamage;
+    private float _iniKnockBack;
+
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -50,10 +63,19 @@ public class Player : MonoBehaviour
         _canAttack = true;
         _anim = GetComponent<Animator>();
         _holdedObject = null;
+        _resistance = 1;
+
+        _iniScale = transform.localScale;
+        _iniResistance = _resistance;
+        _iniBaseDamage = _baseDamage;
+        _iniKnockBack = _knockBack;
     }
 
     private void Start()
     {
+        _hubManager = FindObjectOfType<HubManager>();
+        _fightManager = FindObjectOfType<FightManager>();
+
         GivePowers();
     }
 
@@ -62,6 +84,8 @@ public class Player : MonoBehaviour
         Movement();
         Jump();
         AttackCheck();
+        UsePowers();
+        UpdatePowers();
     }
 
     private void Movement()
@@ -241,7 +265,7 @@ public class Player : MonoBehaviour
             {
                 Destroy(_holdedObject);
                 _holdedObject = null;
-                FindObjectOfType<HubManager>().KidBuried();
+                _hubManager.KidBuried();
                 _grave.GetComponent<Grave>().Bury();
             }
         }
@@ -283,6 +307,80 @@ public class Player : MonoBehaviour
                 _powerUp = _powerManager._upPowers[i];
                 break;
             }
+        }
+    }
+
+    void UsePowers()
+    {
+        if (Input.GetButtonDown("LeftPower") && _powerLeft != null && _leftPowerCD == 0)
+        {
+            transform.localScale = Vector3.one * _powerLeft._heightScale;
+            _resistance = _powerLeft._resistScale;
+            _baseDamage *= _powerLeft._dmgScale;
+            _knockBack *= _powerLeft._knockBackForce;
+            _leftPowerDuration = _powerLeft._duration;
+            _leftPowerCD = _powerLeft._cd;
+
+            if(_powerLeft._windForce > 0)
+            {
+                _fightManager.Wind(_powerLeft._windForce, _leftPowerDuration);
+            }
+
+            if(_powerLeft._stunDuration > 0)
+            {
+                _fightManager.Stun(_powerLeft._stunDuration);
+            }
+
+            if (_powerLeft._potato)
+            {
+                _fightManager.Potato(_leftPowerDuration);
+            }
+        }
+        else if(_leftPowerCD > 0)
+        {
+            Debug.Log("Left Power is in cooldown");
+        }
+
+        if (Input.GetButtonDown("RightPower") && _powerRight != null && _rightPowerCD == 0)
+        {
+            _fightManager.UseRightPower(_powerRight._damage, _powerRight._range, _power);
+            _rightPowerCD = _powerRight._cd;
+        }
+        else if (_rightPowerCD > 0)
+        {
+            Debug.Log("Right Power is in cooldown");
+        }
+
+        if (Input.GetButtonDown("UpPower") && _powerUp != null && _upPowerCD == 0)
+        {
+            _fightManager.UseUpPower(_powerUp._damage, _power);
+            _upPowerCD = _powerUp._cd;
+        }
+        else if (_upPowerCD > 0)
+        {
+            Debug.Log("Up Power is in cooldown");
+        }
+    }
+
+    void UpdatePowers()
+    {
+        _leftPowerCD -= Time.deltaTime;
+        _rightPowerCD -= Time.deltaTime;
+        _upPowerCD -= Time.deltaTime;
+
+        _leftPowerCD = Mathf.Clamp(_leftPowerCD, 0, 100);
+        _rightPowerCD = Mathf.Clamp(_rightPowerCD, 0, 100);
+        _upPowerCD = Mathf.Clamp(_upPowerCD, 0, 100);
+
+        _leftPowerDuration -= Time.deltaTime;
+        _leftPowerDuration = Mathf.Clamp(_leftPowerDuration, 0, 100);
+
+        if(_leftPowerDuration == 0)
+        {
+            transform.localScale = _iniScale;
+            _resistance = _iniResistance;
+            _baseDamage = _iniBaseDamage;
+            _knockBack = _iniKnockBack;
         }
     }
 

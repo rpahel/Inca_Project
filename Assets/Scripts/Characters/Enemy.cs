@@ -9,6 +9,10 @@ public class Enemy : MonoBehaviour
     public bool _isBig;
     public float _health;
     public PowerType _resist;
+    [Range(0f, 100f)]
+    public float _resistPercent;
+    [HideInInspector]
+    public FightManager _fightManager;
 
     [Header("Movement")]
     public float _speed;
@@ -99,7 +103,7 @@ public class Enemy : MonoBehaviour
 
         if(_health <= 0)
         {
-            Destroy(gameObject);
+            _fightManager.EnemyKilled(this.gameObject);
         }
     }
 
@@ -117,6 +121,38 @@ public class Enemy : MonoBehaviour
             {
                 _hit.collider.gameObject.GetComponent<Player>().OnDamage(_damage, _knockBack, transform.position);
             }
+        }
+    }
+
+    public void Stun(float duration)
+    {
+
+    }
+
+    public void Potato(float duration)
+    {
+
+    }
+
+    public void OnPowerDamage(float _damage, float _knockBack, PowerType _type)
+    {
+        if(_type == _resist)
+        {
+            _health -= (_damage - _damage * (_resistPercent / 100f));
+        }
+        else
+        {
+            _health -= _damage;
+        }
+
+        if (!_isBig)
+        {
+            _rb.AddForce(-_toPlayer * _knockBack + Vector2.up * 2, ForceMode2D.Impulse);
+        }
+
+        if (_health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 
