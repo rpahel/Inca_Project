@@ -18,6 +18,7 @@ public class GameStuff : ScriptableObject
     public int _baseNbOfKids;
     //[HideInInspector]
     public int _kidsKilled;
+    public int _kidsBuried;
 
     [Header("Waves")]
     public Wave[] _waves;

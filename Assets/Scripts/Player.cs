@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     private bool _itsHold;
     private Coroutine _lastCoroutine;
     private bool _forDrop;
+    private GameObject _grave;
 
     void Awake()
     {
@@ -230,7 +231,18 @@ public class Player : MonoBehaviour
 
     void DropKid()
     {
-        if (_holdedObject)
+        if(_holdedObject && _grave && !_holdedObject.GetComponent<Kid>()._isDead)
+        {
+            if (!_grave.GetComponent<Grave>().IsFilled())
+            {
+                Destroy(_holdedObject);
+                _holdedObject = null;
+                _gameStuff._kidsBuried++;
+                _grave.GetComponent<Grave>().Bury();
+                _forDrop = false;
+            }
+        }
+        else if (_holdedObject)
         {
             _holdedObject.transform.parent = null;
             _holdedObject.GetComponent<Kid>()._isHeld = false;
@@ -238,6 +250,22 @@ public class Player : MonoBehaviour
             _holdedObject.GetComponent<Rigidbody2D>().isKinematic = false;
             _holdedObject.GetComponent<Rigidbody2D>().velocity = _rb.velocity;
             _holdedObject = null;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Grave"))
+        {
+            _grave = collision.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Grave"))
+        {
+            _grave = null;
         }
     }
 
