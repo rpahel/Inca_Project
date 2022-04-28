@@ -200,12 +200,16 @@ public class Player : MonoBehaviour
             if (_hit && _hit.collider.gameObject.CompareTag("Kid"))
             {
                 _holdedObject = _hit.collider.gameObject;
-                _holdedObject.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x) + new Vector3(0,0, _holdedObject.transform.position.z);
+                _holdedObject.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x * .5f) + new Vector3(0,0, _holdedObject.transform.position.z);
                 _holdedObject.transform.parent = transform;
                 _holdedObject.GetComponent<Kid>()._isHeld = true;
                 _holdedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
                 _holdedObject.GetComponent<Rigidbody2D>().gravityScale = 0f;
                 _holdedObject.GetComponent<Rigidbody2D>().isKinematic = true;
+                if (!_holdedObject.GetComponent<Kid>()._isDead)
+                {
+                    _holdedObject.transform.rotation = Quaternion.Euler(0, 0, 90);
+                }
             }
             else if(!_hit || !_hit.collider.gameObject.CompareTag("Kid"))
             {
@@ -213,7 +217,8 @@ public class Player : MonoBehaviour
                 if (_hit && _hit.collider.gameObject.CompareTag("Kid"))
                 {
                     _holdedObject = _hit.collider.gameObject;
-                    _holdedObject.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x) + new Vector3(0, 0, _holdedObject.transform.position.z);
+                    _holdedObject.transform.position = transform.position + Vector3.up * (_collider.bounds.extents.y + _hit.collider.bounds.extents.x * .5f) + new Vector3(0, 0, _holdedObject.transform.position.z);
+                    _holdedObject.transform.rotation = Quaternion.Euler(0, 0, 90);
                     _holdedObject.transform.parent = transform;
                     _holdedObject.GetComponent<Kid>()._isHeld = true;
                     _holdedObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

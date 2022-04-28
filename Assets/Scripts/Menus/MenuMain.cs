@@ -69,8 +69,8 @@ public class MenuMain : MonoBehaviour
         else
         {
             _time += Time.deltaTime;
-            _buttons[0].GetComponent<RectTransform>().position += new Vector3(0, (_time * _time) / 20f, 0);
-            if(_buttons[0].GetComponent<RectTransform>().position.y >= 800f)
+            _buttons[0].GetComponent<RectTransform>().position += new Vector3(0, (_time * _time) / 10f, 0);
+            if(_buttons[0].GetComponent<RectTransform>().position.y >= 8f)
             {
                 SceneManager.LoadScene("Test_Raphael_1");
             }
