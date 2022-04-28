@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _powerType: 0
   _isPlayerDead: 0
-  _kidsKilled: 0
+  _spanishKilled: 0
+  _kid: {fileID: 7793648389371854655, guid: 97ce735678334194ab23ada8b31deb60, type: 3}
+  _baseNbOfKids: 5
   _waves:
   - _enemies:
     - {fileID: 2916657132828108167, guid: e6e90a961d257b04c9a16d5a8ecdc050, type: 3}
@@ -226,3 +228,4 @@ MonoBehaviour:
     - {fileID: 2916657132828108167, guid: e6e90a961d257b04c9a16d5a8ecdc050, type: 3}
     - {fileID: 2916657132828108167, guid: 671def95742b85040b8afce11bad91e7, type: 3}
     _resist: 3
+  _kidsKilled: 0
