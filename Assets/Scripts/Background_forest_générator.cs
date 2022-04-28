@@ -15,7 +15,7 @@ public class Background_forest_générator : MonoBehaviour
     {
         for(int i = 0; i < _nbBg; i++)
         {
-            Vector2 position = new Vector2(transform.position.x + _DécalageX * i, transform.position.y);
+            Vector3 position = new Vector3(transform.position.x + _DécalageX * i, transform.position.y, transform.position.z);
             GameObject background = Instantiate(_Bg, position, Quaternion.Euler(0, 0, 0));
             SpriteRenderer _renderer = background.GetComponent<SpriteRenderer>();
 
