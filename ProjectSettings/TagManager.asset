@@ -8,6 +8,7 @@ TagManager:
   - Grid_Tile_Map
   - Particles
   - Kid
+  - Grave
   layers:
   - Default
   - TransparentFX
