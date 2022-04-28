@@ -237,7 +237,7 @@ public class Player : MonoBehaviour
             {
                 Destroy(_holdedObject);
                 _holdedObject = null;
-                _gameStuff._kidsBuried++;
+                FindObjectOfType<HubManager>().KidBuried();
                 _grave.GetComponent<Grave>().Bury();
             }
         }

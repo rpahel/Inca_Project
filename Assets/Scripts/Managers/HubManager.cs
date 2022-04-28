@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using Data;
 
 public class HubManager : MonoBehaviour
 {
@@ -8,6 +10,7 @@ public class HubManager : MonoBehaviour
 
     [Header("Kids Stuff")]
     public int _kidsKilled;
+    public int _kidsBuried;
     public float _spawnRange;
     private GameObject _kid;
     private int _nbKids;
@@ -51,6 +54,39 @@ public class HubManager : MonoBehaviour
     {
         _kidsKilled++;
         _gameStuff._kidsKilled = _kidsKilled;
+    }
+
+    public void KidBuried()
+    {
+        _kidsBuried++;
+        _gameStuff._kidsBuried = _kidsBuried;
+    }
+
+    public void NextLevel()
+    {
+        if(_kidsKilled > 0)
+        {
+            _gameStuff._powerType = PowerType.Rock;
+        }
+        if (_kidsKilled > 1)
+        {
+            _gameStuff._powerType = PowerType.Fire;
+        }
+        if (_kidsKilled > 2)
+        {
+            _gameStuff._powerType = PowerType.Thunder;
+        }
+        if (_kidsKilled > 3)
+        {
+            _gameStuff._powerType = PowerType.Death;
+        }
+
+        if (_kidsBuried > 0)
+        {
+            _gameStuff._powerType = PowerType.Potato;
+        }
+
+        SceneManager.LoadScene("Fight_Scene");
     }
 
     private void OnDrawGizmosSelected()

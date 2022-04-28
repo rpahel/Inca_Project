@@ -27,7 +27,7 @@ public class NextRound : MonoBehaviour
     {
         if (Input.GetButtonDown("Attack") && _playerIn)
         {
-            SceneManager.LoadScene("Fight_Scene");
+            FindObjectOfType<HubManager>().NextLevel();
         }
     }
 }
