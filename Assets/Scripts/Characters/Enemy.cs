@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [Tooltip("Distance d'arrêt par rapport au joueur.")]
     public float _stopDistance;
     private Rigidbody2D _rb;
-    //private Collider2D _collider;
+    private Collider2D _collider;
     private Vector2 _toPlayer;
     private GameObject _player;
 
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
-        //_collider = GetComponent<Collider2D>();
+        _collider = GetComponent<Collider2D>();
         _canAttack = true;
     }
 
@@ -50,10 +50,6 @@ public class Enemy : MonoBehaviour
             if (_canAttack)
             {
                 Attack();
-            }
-            else
-            {
-                //Debug.Log(gameObject.name + " is in Cooldown.");
             }
         }
     }
@@ -83,6 +79,12 @@ public class Enemy : MonoBehaviour
             {
                 _rb.velocity = new Vector2(0, _rb.velocity.y);
             }
+        }
+
+        RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center, transform.right, (2 * _collider.bounds.extents.x) * 2);
+        if(_hit && _hit.collider.gameObject.CompareTag("Enemy"))
+        {
+            _rb.velocity = new Vector2(0, _rb.velocity.y);
         }
     }
 

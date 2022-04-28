@@ -21,5 +21,6 @@ public class GameStuff : ScriptableObject
     public int _kidsBuried;
 
     [Header("Waves")]
+    public int _currentRound;
     public Wave[] _waves;
 }

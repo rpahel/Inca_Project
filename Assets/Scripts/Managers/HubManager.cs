@@ -6,7 +6,7 @@ public class HubManager : MonoBehaviour
 {
     public GameStuff _gameStuff;
 
-    [Header("KidsStuff")]
+    [Header("Kids Stuff")]
     public int _kidsKilled;
     public float _spawnRange;
     private GameObject _kid;

@@ -142,9 +142,8 @@ MonoBehaviour:
   _health: 200
   _resist: 0
   _speed: 5
-  _jumpForce: 0
-  _gForce: 1
-  _stopDistance: 1
+  _gScale: 0
+  _stopDistance: 1.1
   _damage: 2
   _attackCd: 5
   _sweepStart: {fileID: 2916657133835236627}
