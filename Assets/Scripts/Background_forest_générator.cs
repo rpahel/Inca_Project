@@ -11,7 +11,8 @@ public class Background_forest_générator : MonoBehaviour
     [SerializeField] private float _DécalageX = 28.173f;
     public GameObject _Bg;
 
-    void Awake()
+    [ContextMenu("Generator")]
+    void BackgroudGenerator()
     {
         for(int i = 0; i < _nbBg; i++)
         {
