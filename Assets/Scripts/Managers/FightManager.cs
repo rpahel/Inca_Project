@@ -28,6 +28,7 @@ public class FightManager : MonoBehaviour
         for(int i = 0; i < _enemies.Length; i++)
         {
             GameObject _newEnemy = Instantiate(_enemies[i], new Vector3(_spawnStart.x + ((_spawnRange * 2) * i) / (float)_enemies.Length, 0, 1), Quaternion.identity);
+            _newEnemy.GetComponent<Enemy>()._resist = _gameStuff._waves[_gameStuff._currentRound]._resist;
             _activeEnemies.Add(_newEnemy);
         }
     }

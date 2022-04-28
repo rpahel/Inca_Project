@@ -81,7 +81,7 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center, transform.right, (2 * _collider.bounds.extents.x) * 2);
+        RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center, transform.right, (2 * _collider.bounds.extents.x) * 1.25f);
         if(_hit && _hit.collider.gameObject.CompareTag("Enemy"))
         {
             _rb.velocity = new Vector2(0, _rb.velocity.y);

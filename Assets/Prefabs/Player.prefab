@@ -160,16 +160,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _health: 100
-  _gameStuff: {fileID: 0}
-  _powerManager: {fileID: 0}
+  _gameStuff: {fileID: 11400000, guid: 76e42a8194aaf494783bf3b3427b49a6, type: 2}
+  _powerManager: {fileID: 11400000, guid: 1b5c9f320295b124491ed1e56b7f1609, type: 2}
   _power: 0
   _powerLeft: {fileID: 0}
   _powerRight: {fileID: 0}
   _powerUp: {fileID: 0}
   _speed: 10
   _jumpForce: 20
-  _gScale: 0
-  _baseDamage: 0
+  _gScale: 5
+  _baseDamage: 50
   _attackCd: 0.25
   _knockBack: 20
   _sweepStart: {fileID: 2123061004695965589}

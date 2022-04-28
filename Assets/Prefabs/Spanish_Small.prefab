@@ -143,7 +143,7 @@ MonoBehaviour:
   _resist: 0
   _speed: 8
   _gScale: 0
-  _stopDistance: 1.1
+  _stopDistance: 1.25
   _damage: 1
   _attackCd: 3
   _sweepStart: {fileID: 2916657133835236627}
