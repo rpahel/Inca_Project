@@ -15,7 +15,7 @@ MonoBehaviour:
   _powerType: 2
   _heightScale: 2
   _resistScale: 2
-  _dmgScale: 1
+  _dmgScale: 1.5
   _knockBackForce: 1
   _windForce: 0
   _stunDuration: 0
