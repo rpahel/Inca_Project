@@ -13,8 +13,12 @@ public class Kid : MonoBehaviour
     public float _distance;
     private Vector3 _startPos, _endPos, _currentTarget;
 
-    private SpriteRenderer _sprite;
+    [Header("Gender")]
+    private bool _isGirl;
+    public Sprite _girlHeadSprite;
+
     private Collider2D _collider;
+    private Animator _animator;
     [HideInInspector] public bool _isDead;
 
     private void Awake()
@@ -25,11 +29,22 @@ public class Kid : MonoBehaviour
         }
 
         _rb = GetComponent<Rigidbody2D>();
-        _sprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
         _collider = GetComponent<Collider2D>();
         _startPos = transform.position - new Vector3(_distance, 0, 0);
         _endPos = transform.position + new Vector3(_distance, 0, 0);
         _currentTarget = _startPos;
+
+        int a = Random.Range(0, 2);
+        if(a == 0)
+        {
+            _isGirl = false;
+        }
+        else
+        {
+            _isGirl = true;
+        }
+        _animator.SetBool("isGirl", _isGirl);
     }
 
     private void Start()
@@ -51,7 +66,7 @@ public class Kid : MonoBehaviour
             }
             else if (_toTarget.x < 0)
             {
-                transform.rotation = Quaternion.Euler(0, 0, 180);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
             }
 
             if (transform.position.x <= _startPos.x)
@@ -86,15 +101,19 @@ public class Kid : MonoBehaviour
         if (!_isDead)
         {
             _isDead = true;
-            _sprite.color = Color.red;
             GameObject _head = Instantiate(_kidHead, _collider.bounds.center + Vector3.up * _collider.bounds.extents.y, Quaternion.identity);
+            
+            if(_isGirl)
+                _head.GetComponent<SpriteRenderer>().sprite = _girlHeadSprite;
+            
             Rigidbody2D _headRb = _head.GetComponent<Rigidbody2D>();
             _headRb.velocity = _rb.velocity + Vector2.up * 3f;
             _headRb.angularVelocity = 180f;
             Destroy(_head, 3f);
 
-            transform.rotation = Quaternion.Euler(0, 0, 90f);
+            //transform.rotation = Quaternion.Euler(0, 0, 90f);
             _hubManager.KidKilled();
+            _animator.SetTrigger("Die");
         }
     }
 

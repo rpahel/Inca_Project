@@ -35,9 +35,11 @@ public class Player : MonoBehaviour
     public Transform _sweepStart, _sweepEnd;
     private bool _canAttack;
 
+    [Header("Holding Kids")]
     private GameObject _cadaver;
     private bool _itsHold;
     private Coroutine _lastCoroutine;
+    private bool _forDrop;
 
     void Awake()
     {
@@ -124,6 +126,7 @@ public class Player : MonoBehaviour
             if (_cadaver)
             {
                 DropKid();
+                _forDrop = true;
             }
         }
 
@@ -133,13 +136,17 @@ public class Player : MonoBehaviour
 
             if (!_cadaver)
             {
-                if (!_itsHold && _canAttack)
+                if (!_forDrop)
                 {
-                    Attack();
-                }
-                else if (!_itsHold && !_canAttack)
-                {
-                    Debug.Log("You are in Cooldown.");
+                    if (!_itsHold && _canAttack)
+                    {
+                        Attack();
+                    }
+                    else if (!_itsHold && !_canAttack)
+                    {
+                        Debug.Log("You are in Cooldown.");
+                    }
+                    _forDrop=false;
                 }
             }
         }
@@ -192,7 +199,7 @@ public class Player : MonoBehaviour
     {
         if (!_cadaver)
         {
-            RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center + Vector3.up * _collider.bounds.extents.y, Vector2.down, _collider.bounds.extents.y * 2);
+            RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center, Vector2.down, _collider.bounds.extents.y * 2);
             if (_hit && _hit.collider.gameObject.CompareTag("Kid"))
             {
                 if (_hit.collider.gameObject.GetComponent<Kid>()._isDead)
