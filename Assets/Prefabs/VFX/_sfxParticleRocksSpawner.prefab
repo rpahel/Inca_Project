@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8843641832979227147}
   - component: {fileID: 8843641832979227144}
   - component: {fileID: 8843641832979227145}
+  - component: {fileID: 8683636777948045062}
   m_Layer: 0
   m_Name: _sfxParticleRocksSpawner
   m_TagString: Untagged
@@ -4828,3 +4829,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sfxGameObject: {fileID: 0}
   _sfxParticleSystem: {fileID: 2216876357439981549, guid: e1f2174edf0f63847a09bcc23cd7227b, type: 3}
+--- !u!114 &8683636777948045062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843641832979227150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cca512db2d2e7a4d927a0da612847a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _lifeTime: 8

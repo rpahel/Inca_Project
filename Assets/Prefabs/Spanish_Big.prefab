@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2916657132828108187}
   - component: {fileID: 2916657132828108164}
   m_Layer: 0
-  m_Name: Spanish_Small
+  m_Name: Spanish_Big
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,18 +138,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0fe7dc068ebdfa44b60f6c6aa52b229, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _isBig: 0
-  _health: 100
+  _isBig: 1
+  _health: 200
   _resist: 0
-  _speed: 8
+  _speed: 5
   _jumpForce: 0
   _gForce: 0
-  _stopDistance: 2
-  _damage: 1
-  _attackCd: 3
+  _stopDistance: 1
+  _damage: 2
+  _attackCd: 5
   _sweepStart: {fileID: 2916657133835236627}
   _sweepEnd: {fileID: 2916657133862257127}
-  _knockBack: 2
+  _knockBack: 10
 --- !u!1 &2916657133835236636
 GameObject:
   m_ObjectHideFlags: 0
