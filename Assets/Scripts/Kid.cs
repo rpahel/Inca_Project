@@ -12,6 +12,7 @@ public class Kid : MonoBehaviour
     public float _speed;
     public float _distance;
     private Vector3 _startPos, _endPos, _currentTarget;
+    [HideInInspector] public bool _isHeld;
 
     [Header("Gender")]
     private bool _isGirl;
@@ -54,7 +55,7 @@ public class Kid : MonoBehaviour
 
     private void Update()
     {
-        if (!_isDead)
+        if (!_isDead && !_isHeld)
         {
             Vector2 _toTarget = (transform.position - _currentTarget).normalized;
             _toTarget = new Vector2(-_toTarget.x / Mathf.Abs(_toTarget.x + Mathf.Epsilon), 0);
@@ -81,7 +82,7 @@ public class Kid : MonoBehaviour
             RaycastHit2D _hit = Physics2D.Raycast(_collider.bounds.center + Vector3.up * 0.1f, transform.right, _collider.bounds.extents.x + 0.01f);
             if(_hit)
             {
-                if (!_hit.collider.gameObject.CompareTag("Player"))
+                if (!_hit.collider.gameObject.CompareTag("Player") && !_hit.collider.gameObject.CompareTag("Kid"))
                 {
                     if (_currentTarget == _endPos)
                     {
