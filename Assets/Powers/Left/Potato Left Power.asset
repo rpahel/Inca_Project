@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df78e75765ae69246a1f82b3cddec265, type: 3}
   m_Name: Potato Left Power
   m_EditorClassIdentifier: 
-  _powerType: 3
+  _powerType: 5
   _heightScale: 1
   _resistScale: 1
   _dmgScale: 1

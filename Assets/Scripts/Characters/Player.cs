@@ -50,7 +50,11 @@ public class Player : MonoBehaviour
         _canAttack = true;
         _anim = GetComponent<Animator>();
         _holdedObject = null;
-        //Attribuer les modifiers aux pouvoirs et faire les pouvoirs aussi ahah
+    }
+
+    private void Start()
+    {
+        GivePowers();
     }
 
     void Update()
@@ -249,6 +253,36 @@ public class Player : MonoBehaviour
             _holdedObject.GetComponent<Rigidbody2D>().isKinematic = false;
             _holdedObject.GetComponent<Rigidbody2D>().velocity = _rb.velocity;
             _holdedObject = null;
+        }
+    }
+
+    void GivePowers()
+    {
+        for (int i = 0; i < _powerManager._leftPowers.Length; i++)
+        {
+            if (_powerManager._leftPowers[i]._powerType == _power)
+            {
+                _powerLeft = _powerManager._leftPowers[i];
+                break;
+            }
+        }
+
+        for (int i = 0; i < _powerManager._rightPowers.Length; i++)
+        {
+            if (_powerManager._rightPowers[i]._powerType == _power)
+            {
+                _powerRight = _powerManager._rightPowers[i];
+                break;
+            }
+        }
+
+        for (int i = 0; i < _powerManager._upPowers.Length; i++)
+        {
+            if (_powerManager._upPowers[i]._powerType == _power)
+            {
+                _powerUp = _powerManager._upPowers[i];
+                break;
+            }
         }
     }
 
