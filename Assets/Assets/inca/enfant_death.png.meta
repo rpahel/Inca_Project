@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9a3d115f0885e914ca1443bb6dc1a351
+guid: a634710d6ccf6c5439e4053d2743d35a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 32
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -66,7 +66,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 256
+    maxTextureSize: 128
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
@@ -104,85 +104,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: inca_qui_marche_0
+      name: enfant_death_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 1
-        width: 24
-        height: 60
+        x: 17
+        y: 65
+        width: 35
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f9d6acf050fdd924fbf1186518d878fb
-      internalID: 501273516
+      spriteID: a6718c87bd4c3df498fa8576bc8b7c3b
+      internalID: -438470217
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inca_qui_marche_1
+      name: enfant_death_1
       rect:
         serializedVersion: 2
-        x: 83
-        y: 1
-        width: 23
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 81
+        y: 65
+        width: 35
+        height: 18
+      alignment: 9
+      pivot: {x: 0.5, y: 0.79995644}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 45a2f895df2a24e46970d3c3e2357268
-      internalID: -207555975
+      spriteID: 575b6e60a747e744cae101ab01218cc5
+      internalID: 922488791
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inca_qui_marche_2
+      name: enfant_death_2
       rect:
         serializedVersion: 2
-        x: 147
-        y: 1
-        width: 24
-        height: 60
+        x: 18
+        y: 0
+        width: 33
+        height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e508de7020d128a4eab265709a22c49e
-      internalID: 1468451131
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: inca_qui_marche_3
-      rect:
-        serializedVersion: 2
-        x: 211
-        y: 1
-        width: 23
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5eec31b2f90096c44a6535df4228a579
-      internalID: 119987774
+      spriteID: adbf32a56b9f8da45babd63e92e288b9
+      internalID: 1506150084
       vertices: []
       indices: 
       edges: []
@@ -198,10 +177,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      inca_qui_marche_0: 501273516
-      inca_qui_marche_1: -207555975
-      inca_qui_marche_3: 119987774
-      inca_qui_marche_2: 1468451131
+      enfant_death_1: 922488791
+      enfant_death_0: -438470217
+      enfant_death_2: 1506150084
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -4828,7 +4828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4877f62cb0fdea0478b227b7b0955d4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sfxGameObject: {fileID: 6485461501347618323, guid: 25264124d13ec944ebb38f21aaf23225, type: 3}
+  _sfxGameObject: {fileID: 1849701289602060288, guid: 0228a570ebf80934984327bd9afeda63, type: 3}
   _sfxParticleSystem: {fileID: 0}
 --- !u!114 &8302519469296377702
 MonoBehaviour:
@@ -4842,4 +4842,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cca512db2d2e7a4d927a0da612847a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _lifeTime: 3
+  _lifeTime: 100

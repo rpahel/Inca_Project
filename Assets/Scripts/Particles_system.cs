@@ -25,7 +25,7 @@ public class Particles_system : MonoBehaviour
             enter[i] = p;
             Vector3 _newPos = new Vector3(p.position.x + transform.position.x, Random.Range(transform.position.y-0.5f, transform.position.y), 0);
             //Random.Range(-4f, -3f)
-            Debug.Log(_newPos);
+            
             if(_sfxGameObject != null)
             {
                 Instantiate(_sfxGameObject, _newPos, Quaternion.Euler(0, 0, Random.Range(0, 90)));
