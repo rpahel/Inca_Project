@@ -5,6 +5,7 @@ using UnityEngine;
 public class Kid : MonoBehaviour
 {
     private HubManager _hubManager;
+    public GameObject _kidHead;
 
     [Header("Movement")]
     private Rigidbody2D _rb;
@@ -18,6 +19,11 @@ public class Kid : MonoBehaviour
 
     private void Awake()
     {
+        if(_kidHead == null)
+        {
+            throw new System.Exception(name + " has no associated head !!");
+        }
+
         _rb = GetComponent<Rigidbody2D>();
         _sprite = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
@@ -81,6 +87,12 @@ public class Kid : MonoBehaviour
         {
             _isDead = true;
             _sprite.color = Color.red;
+            GameObject _head = Instantiate(_kidHead, _collider.bounds.center + Vector3.up * _collider.bounds.extents.y, Quaternion.identity);
+            Rigidbody2D _headRb = _head.GetComponent<Rigidbody2D>();
+            _headRb.velocity = _rb.velocity + Vector2.up * 3f;
+            _headRb.angularVelocity = 180f;
+            Destroy(_head, 3f);
+
             transform.rotation = Quaternion.Euler(0, 0, 90f);
             _hubManager.KidKilled();
         }
