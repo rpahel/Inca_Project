@@ -260,6 +260,11 @@ public class Player : MonoBehaviour
                 }
             }
         }
+
+        if (_holdedObject)
+        {
+            _anim.SetBool("isHolding", true);
+        }
     }
 
     void DropKid()
@@ -272,6 +277,7 @@ public class Player : MonoBehaviour
                 _holdedObject = null;
                 _hubManager.KidBuried();
                 _grave.GetComponent<Grave>().Bury();
+                _anim.SetBool("isHolding", false);
             }
         }
         else if (_holdedObject)
@@ -282,6 +288,7 @@ public class Player : MonoBehaviour
             _holdedObject.GetComponent<Rigidbody2D>().isKinematic = false;
             _holdedObject.GetComponent<Rigidbody2D>().velocity = _rb.velocity;
             _holdedObject = null;
+            _anim.SetBool("isHolding", false);
         }
     }
 
