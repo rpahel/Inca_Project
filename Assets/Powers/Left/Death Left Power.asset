@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df78e75765ae69246a1f82b3cddec265, type: 3}
   m_Name: Death Left Power
   m_EditorClassIdentifier: 
-  _powerType: 3
+  _powerType: 4
   _heightScale: 2
   _resistScale: 2
   _dmgScale: 2

@@ -14,6 +14,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isStun
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: isPotato
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1311116913722550993}
   m_Solo: 0
@@ -460,8 +463,8 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: isBig
     m_EventTreshold: 0
-  - m_ConditionMode: 1
-    m_ConditionEvent: isStun
+  - m_ConditionMode: 2
+    m_ConditionEvent: isPotato
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 4633301695670845541}
