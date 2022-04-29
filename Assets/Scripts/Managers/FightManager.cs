@@ -14,6 +14,7 @@ public class FightManager : MonoBehaviour
     private List<GameObject> _activeEnemies = new List<GameObject>();
     private PowerType _resistance;
     private Vector2 _spawnStart;
+    [SerializeField] ParticleSystem bloodParticles;
 
     private void Awake()
     {
@@ -32,6 +33,7 @@ public class FightManager : MonoBehaviour
             _newEnemy.GetComponent<Enemy>()._resist = _resistance;
             _newEnemy.GetComponent<Enemy>()._fightManager = this;
             _activeEnemies.Add(_newEnemy);
+            _newEnemy.GetComponent<Enemy>().sang = bloodParticles;
         }
     }
 

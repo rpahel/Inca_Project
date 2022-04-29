@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     private bool _canAttack;
     private bool _isPotato;
 
+    public ParticleSystem sang;
     void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
@@ -128,6 +129,8 @@ public class Enemy : MonoBehaviour
 
         if(_health <= 0)
         {
+            ParticleSystem bloodParticles = Instantiate(sang, transform.position, Quaternion.identity);
+            bloodParticles.GetComponent<Particles_autoDestroy>()._Destroy = true;
             _fightManager.EnemyKilled(this.gameObject);
         }
     }
