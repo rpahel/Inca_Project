@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2916657132828108186}
   - component: {fileID: 2916657132828108187}
   - component: {fileID: 2916657132828108164}
+  - component: {fileID: 5503783769317173146}
   m_Layer: 0
   m_Name: Spanish_Big
   m_TagString: Enemy
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.82450336, g: 0.2688679, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -151,6 +152,26 @@ MonoBehaviour:
   _sweepStart: {fileID: 2916657133835236627}
   _sweepEnd: {fileID: 2916657133862257127}
   _knockBack: 10
+--- !u!95 &5503783769317173146
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2916657132828108167}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1cdf2ff083b207a4a800743b8577ac47, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2916657133835236636
 GameObject:
   m_ObjectHideFlags: 0
