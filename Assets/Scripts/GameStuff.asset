@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e16758adb98b1c49915384a22544d46, type: 3}
   m_Name: GameStuff
   m_EditorClassIdentifier: 
-  _powerType: 1
+  _powerType: 3
   _isPlayerDead: 0
-  _spanishKilled: 1
+  _spanishKilled: 29
   _kid: {fileID: 7793648389371854655, guid: 97ce735678334194ab23ada8b31deb60, type: 3}
   _baseNbOfKids: 10
   _kidsKilled: 0
   _kidsBuried: 0
-  _currentRound: 0
+  _currentRound: 1
   _waves:
   - _enemies:
     - {fileID: 2916657132828108167, guid: e6e90a961d257b04c9a16d5a8ecdc050, type: 3}
