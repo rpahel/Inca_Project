@@ -70,10 +70,10 @@ public class FightManager : MonoBehaviour
                 Instantiate(_listGameObject[0], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
                 break;
             case PowerType.Potato:
-                Instantiate(_listGameObject[1], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+                Instantiate(_listGameObject[1], new Vector2(GameObject.FindGameObjectWithTag("Player").transform.position.x - 8, GameObject.FindGameObjectWithTag("Player").transform.position.y), Quaternion.identity);
                 break;
             case PowerType.Thunder:
-                Instantiate(_listGameObject[2], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+                Instantiate(_listGameObject[2], new Vector2(GameObject.FindGameObjectWithTag("Player").transform.position.x - 8, GameObject.FindGameObjectWithTag("Player").transform.position.y), Quaternion.identity);
                 break;
         }
     }
