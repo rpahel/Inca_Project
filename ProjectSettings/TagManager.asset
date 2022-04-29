@@ -9,6 +9,7 @@ TagManager:
   - Particles
   - Kid
   - Grave
+  - carte
   layers:
   - Default
   - TransparentFX

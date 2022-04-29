@@ -5,6 +5,7 @@ using UnityEngine;
 public class Particles_autoDestroy : MonoBehaviour
 {
     [SerializeField] private float _lifeTime;
+    public bool _Destroy = true;
 
     void Start()
     {
@@ -14,6 +15,9 @@ public class Particles_autoDestroy : MonoBehaviour
     IEnumerator Mort_prog()
     {
         yield return new WaitForSeconds(_lifeTime);
-        Destroy(gameObject);
+        if (_Destroy)
+        {
+            Destroy(gameObject);
+        }
     }
 }
