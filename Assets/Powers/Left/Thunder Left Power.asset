@@ -18,7 +18,7 @@ MonoBehaviour:
   _dmgScale: 1
   _knockBackForce: 1
   _windForce: 1
-  _stunDuration: 1
+  _stunDuration: 0
   _duration: 3
   _cd: 6
   _potato: 0
