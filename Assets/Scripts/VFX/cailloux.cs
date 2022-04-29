@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class cailloux : MonoBehaviour
 {
-    [SerializeField] private ParticleSystem cailloux;
+    [SerializeField] private ParticleSystem ParticlesCailloux;
     void Start()
     {
         
