@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Data;
 
 public class FightManager : MonoBehaviour
@@ -99,5 +100,18 @@ public class FightManager : MonoBehaviour
         Gizmos.DrawLine(transform.position - new Vector3(_spawnRange, 0, 0), transform.position + new Vector3(_spawnRange, 0, 0));
         Gizmos.DrawWireSphere(transform.position - new Vector3(_spawnRange, 0, 0), 0.2f);
         Gizmos.DrawWireSphere(transform.position + new Vector3(_spawnRange, 0, 0), 0.2f);
+    }
+
+    private void Update()
+    {
+        if(_activeEnemies.Count == 0)
+        {
+            _gameStuff._currentRound++;
+            if(_gameStuff._currentRound >= _gameStuff._waves.Length)
+            {
+                _gameStuff._currentRound = 4;
+            }
+            SceneManager.LoadScene("Hub_Scene");
+        }
     }
 }
