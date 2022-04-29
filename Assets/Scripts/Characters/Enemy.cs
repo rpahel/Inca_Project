@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public FightManager _fightManager;
 
+    private Animator _animator;
+
     [Header("Movement")]
     public float _speed;
     public float _gScale;
@@ -38,12 +40,14 @@ public class Enemy : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
         _collider = GetComponent<Collider2D>();
+        _animator = GetComponent<Animator>();
         _canAttack = true;
     }
 
     private void Start()
     {
         _player = GameObject.FindGameObjectWithTag("Player");
+        _animator.SetBool("isBig", _isBig);
     }
 
     // Update is called once per frame
@@ -58,12 +62,19 @@ public class Enemy : MonoBehaviour
         {
             if (!_isBig)
             {
-                _rb.velocity += new Vector2(_windForce, 0);
+                _rb.velocity += new Vector2(_windForce / 4, 0);
+                _animator.SetBool("isPushed", true);
             }
             else
             {
-                _rb.velocity += new Vector2(_windForce / 8, 0);
+                _animator.SetFloat("Speed", Mathf.Abs(_rb.velocity.x));
             }
+
+            return;
+        }
+        else
+        {
+            _animator.SetBool("isPushed", false);
         }
 
         if (_isStunned)
@@ -115,6 +126,8 @@ public class Enemy : MonoBehaviour
         {
             _rb.velocity = new Vector2(0, _rb.velocity.y);
         }
+
+        _animator.SetFloat("Speed", Mathf.Abs(_rb.velocity.x));
     }
 
     public void OnDamage(float _damage, float _knockBack)
@@ -147,6 +160,8 @@ public class Enemy : MonoBehaviour
                 _hit.collider.gameObject.GetComponent<Player>().OnDamage(_damage, _knockBack, transform.position);
             }
         }
+
+        _animator.SetTrigger("Attack");
     }
 
     public void Stun(float duration)
@@ -158,6 +173,7 @@ public class Enemy : MonoBehaviour
     public void Potato(float duration)
     {
         _isPotato = true;
+        _animator.SetBool("isPotato", _isPotato);
         StartCoroutine(PotatoCd(duration));
     }
 
@@ -214,6 +230,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(duration);
         _isPotato = false;
+        _animator.SetBool("isPotato", _isPotato);
         StopCoroutine(PotatoCd(duration));
     }
 }
