@@ -52,17 +52,26 @@ public class FightManager : MonoBehaviour
 
     public void Stun(float stunDuration)
     {
-
+        foreach(GameObject enemy in _activeEnemies)
+        {
+            enemy.GetComponent<Enemy>().Stun(stunDuration);
+        }
     }
 
     public void Potato(float duration)
     {
-
+        foreach (GameObject enemy in _activeEnemies)
+        {
+            enemy.GetComponent<Enemy>().Potato(duration);
+        }
     }
 
     public void Wind(float force, float duration)
     {
-
+        foreach (GameObject enemy in _activeEnemies)
+        {
+            enemy.GetComponent<Enemy>().Wind(force, duration); ;
+        }
     }
 
     private void OnDrawGizmosSelected()
