@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Data;
+using TMPro;
 
 public class HubManager : MonoBehaviour
 {
@@ -16,6 +17,9 @@ public class HubManager : MonoBehaviour
     private GameObject _kid;
     private int _nbKids;
     private Vector2 _spawnStart;
+
+    public GameObject _powerGivenObj;
+    public TMP_Text _powerGivenText;
 
     private void Awake()
     {
@@ -56,12 +60,50 @@ public class HubManager : MonoBehaviour
     {
         _kidsKilled++;
         _gameStuff._kidsKilled = _kidsKilled;
+
+        if (_kidsKilled > 2)
+        {
+            _powerGivenText.text = "The God of Mountains is appeased.";
+        }
+        if (_kidsKilled > 5)
+        {
+            _powerGivenText.text = "The God of Fire is appeased.";
+        }
+        if (_kidsKilled > 10)
+        {
+            _powerGivenText.text = "The God of Thunder is appeased.";
+        }
+        if (_kidsKilled > 15)
+        {
+            _powerGivenText.text = "The Goddess of Potatoes is appeased.";
+        }
+        if (_kidsBuried > 3 && _kidsKilled > 9)
+        {
+            _powerGivenText.text = "The God of Death is appeased.";
+        }
+
+        if(_kidsKilled == 3 || _kidsKilled == 6 || _kidsKilled == 11 || _kidsKilled == 16 || (_kidsKilled > 9 && _kidsBuried == 4) || (_kidsKilled == 10 && _kidsBuried > 3))
+        {
+            _powerGivenObj.SetActive(true);
+            StartCoroutine(TextDisappear());
+        }
     }
 
     public void KidBuried()
     {
         _kidsBuried++;
         _gameStuff._kidsBuried = _kidsBuried;
+
+        if (_kidsBuried > 3 && _kidsKilled > 9)
+        {
+            _powerGivenText.text = "The God of Death is appeased.";
+        }
+
+        if ((_kidsKilled > 9 && _kidsBuried == 4) || (_kidsKilled == 10 && _kidsBuried > 3))
+        {
+            _powerGivenObj.SetActive(true);
+            StartCoroutine(TextDisappear());
+        }
     }
 
     public void NextLevel()
@@ -89,6 +131,12 @@ public class HubManager : MonoBehaviour
         }
 
         SceneManager.LoadScene("Fight_Scene");
+    }
+
+    IEnumerator TextDisappear()
+    {
+        yield return new WaitForSeconds(3f);
+        _powerGivenObj.SetActive(false);
     }
 
     private void OnDrawGizmosSelected()
