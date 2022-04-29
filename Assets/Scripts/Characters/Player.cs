@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Data;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -54,6 +55,10 @@ public class Player : MonoBehaviour
     private float _iniResistance;
     private float _iniBaseDamage;
     private float _iniKnockBack;
+
+    [Header("Powers")]
+    [Tooltip("Nombre de pics à faire jaillir du sol pour le pouvoir de droite.")]
+    public int _nbSpikes;
 
     void Awake()
     {
@@ -200,7 +205,7 @@ public class Player : MonoBehaviour
 
     public void OnDamage(float _damage, float _knockBack, Vector3 _enemyPos)
     {
-        _health -= _damage;
+        _health -= _damage / _resistance;
 
         Vector2 _toEnemy = (_enemyPos - transform.position).normalized;
         _toEnemy = new Vector2(_toEnemy.x / Mathf.Abs(_toEnemy.x + Mathf.Epsilon), 0);
@@ -336,17 +341,17 @@ public class Player : MonoBehaviour
                 _fightManager.Potato(_leftPowerDuration);
             }
         }
-        else if(_leftPowerCD > 0)
+        else if(Input.GetButtonDown("LeftPower") && _powerLeft != null && _leftPowerCD > 0)
         {
             Debug.Log("Left Power is in cooldown");
         }
 
         if (Input.GetButtonDown("RightPower") && _powerRight != null && _rightPowerCD == 0)
         {
-            _fightManager.UseRightPower(_powerRight._damage, _powerRight._range, _power);
+            UseRightPower(_powerRight._damage, _powerRight._range, _power);
             _rightPowerCD = _powerRight._cd;
         }
-        else if (_rightPowerCD > 0)
+        else if (Input.GetButtonDown("RightPower") && _powerRight != null && _rightPowerCD > 0)
         {
             Debug.Log("Right Power is in cooldown");
         }
@@ -356,10 +361,16 @@ public class Player : MonoBehaviour
             _fightManager.UseUpPower(_powerUp._damage, _power);
             _upPowerCD = _powerUp._cd;
         }
-        else if (_upPowerCD > 0)
+        else if (Input.GetButtonDown("UpPower") && _powerUp != null && _upPowerCD > 0)
         {
             Debug.Log("Up Power is in cooldown");
         }
+    }
+
+    private void UseRightPower(float damage, float range, PowerType power)
+    {
+        //RaycastHit2D[] _hits;
+        //_hits = Physics2D.RaycastAll(_collider.bounds.center, )
     }
 
     void UpdatePowers()

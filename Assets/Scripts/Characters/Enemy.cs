@@ -147,12 +147,12 @@ public class Enemy : MonoBehaviour
 
         if (!_isBig)
         {
-            _rb.AddForce(-_toPlayer * _knockBack + Vector2.up * 2, ForceMode2D.Impulse);
+            _rb.AddForce(-_toPlayer * _knockBack + Vector2.up * 5, ForceMode2D.Impulse);
         }
 
         if (_health <= 0)
         {
-            Destroy(gameObject);
+            _fightManager.EnemyKilled(this.gameObject);
         }
     }
 

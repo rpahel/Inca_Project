@@ -44,34 +44,10 @@ public class FightManager : MonoBehaviour
 
     public void UseUpPower(float _damage, PowerType _power)
     {
-        // Fait crash unity
-
-        //int count = _activeEnemies.Count;
-        //
-        //for (int i = 0; i < count;)
-        //{
-        //    if(_activeEnemies[i].GetComponent<Enemy>()._resist == _power)
-        //    {
-        //        if(_activeEnemies[i].GetComponent<Enemy>()._health - (_damage - _damage * (_activeEnemies[i].GetComponent<Enemy>()._resistPercent / 100f)) > 0)
-        //        {
-        //            i++;
-        //        }
-        //    }
-        //    else
-        //    {
-        //        if (_activeEnemies[i].GetComponent<Enemy>()._health - _damage > 0)
-        //        {
-        //            i++;
-        //        }
-        //    }
-        //
-        //    _activeEnemies[i].GetComponent<Enemy>().OnPowerDamage(_damage, 0, _power);
-        //}
-    }
-
-    public void UseRightPower(float _damage, float _range, PowerType _power)
-    {
-
+        for (int i = _activeEnemies.Count - 1; i > -1; i--)
+        {
+            _activeEnemies[i].GetComponent<Enemy>().OnPowerDamage(_damage, 0, _power);
+        }
     }
 
     public void Stun(float stunDuration)

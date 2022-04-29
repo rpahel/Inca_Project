@@ -162,6 +162,8 @@ MonoBehaviour:
   _health: 100
   _gameStuff: {fileID: 11400000, guid: 76e42a8194aaf494783bf3b3427b49a6, type: 2}
   _powerManager: {fileID: 11400000, guid: 1b5c9f320295b124491ed1e56b7f1609, type: 2}
+  _hubManager: {fileID: 0}
+  _fightManager: {fileID: 0}
   _power: 0
   _powerLeft: {fileID: 0}
   _powerRight: {fileID: 0}
@@ -174,6 +176,7 @@ MonoBehaviour:
   _knockBack: 20
   _sweepStart: {fileID: 2123061004695965589}
   _sweepEnd: {fileID: 2123061005520350676}
+  _nbSpikes: 5
 --- !u!1 &2123061004695965590
 GameObject:
   m_ObjectHideFlags: 0
