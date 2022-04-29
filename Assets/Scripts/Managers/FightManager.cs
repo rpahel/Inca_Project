@@ -80,7 +80,7 @@ public class FightManager : MonoBehaviour
     IEnumerator UpPower(int i, float _damage, PowerType _power)
     {
 
-        yield return new WaitForSeconds(Random.Range(2f, 4f));
+        yield return new WaitForSeconds(0);
         _activeEnemies[i].GetComponent<Enemy>().OnPowerDamage(_damage, 0, _power);
     }
     public void Stun(float stunDuration)
