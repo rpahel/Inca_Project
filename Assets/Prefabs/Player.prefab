@@ -173,7 +173,7 @@ MonoBehaviour:
   _gScale: 5
   _baseDamage: 50
   _attackCd: 0.25
-  _knockBack: 20
+  _knockBack: 300
   _sweepStart: {fileID: 2123061004695965589}
   _sweepEnd: {fileID: 2123061005520350676}
   _nbSpikes: 5

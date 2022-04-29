@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _powerType: 1
   _isPlayerDead: 0
-  _spanishKilled: 0
+  _spanishKilled: 1
   _kid: {fileID: 7793648389371854655, guid: 97ce735678334194ab23ada8b31deb60, type: 3}
   _baseNbOfKids: 10
-  _kidsKilled: 5
+  _kidsKilled: 0
   _kidsBuried: 0
   _currentRound: 0
   _waves:

@@ -17,7 +17,7 @@ MonoBehaviour:
   _resistScale: 1
   _dmgScale: 1
   _knockBackForce: 1
-  _windForce: 2
+  _windForce: 0
   _stunDuration: 1
   _duration: 2
   _cd: 6
