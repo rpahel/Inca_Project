@@ -3614,7 +3614,7 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     type: 1
     collisionMode: 1
@@ -3804,7 +3804,7 @@ ParticleSystem:
     colliderQueryMode: 0
     radiusScale: 1
     primitives:
-    - {fileID: 0}
+    - {fileID: 1103399201475733580, guid: 5a3c801b58bc7d34282a1776418a374e, type: 3}
   SubModule:
     serializedVersion: 2
     enabled: 0

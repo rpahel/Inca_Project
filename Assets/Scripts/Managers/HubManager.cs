@@ -7,6 +7,7 @@ using Data;
 public class HubManager : MonoBehaviour
 {
     public GameStuff _gameStuff;
+    [SerializeField] private ParticleSystem sang;
 
     [Header("Kids Stuff")]
     public int _kidsKilled;
@@ -47,6 +48,7 @@ public class HubManager : MonoBehaviour
             Kid _kidScript = _kidClone.GetComponent<Kid>();
             _kidScript._speed = Random.Range(1f, 5f);
             _kidScript._distance = Random.Range(2f, 4f);
+            _kidScript.bloodParticles = sang;
         }
     }
 

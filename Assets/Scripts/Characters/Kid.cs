@@ -6,6 +6,7 @@ public class Kid : MonoBehaviour
 {
     private HubManager _hubManager;
     public GameObject _kidHead;
+    public ParticleSystem bloodParticles;
 
     [Header("Movement")]
     private Rigidbody2D _rb;
@@ -106,6 +107,10 @@ public class Kid : MonoBehaviour
             
             if(_isGirl)
                 _head.GetComponent<SpriteRenderer>().sprite = _girlHeadSprite;
+
+            //Blood Particles
+            ParticleSystem sang = Instantiate(bloodParticles,transform.position,Quaternion.Euler(0,0,0));
+            sang.GetComponent<Particles_autoDestroy>()._Destroy = true;
             
             Rigidbody2D _headRb = _head.GetComponent<Rigidbody2D>();
             _headRb.velocity = _rb.velocity + Vector2.up * 3f;
