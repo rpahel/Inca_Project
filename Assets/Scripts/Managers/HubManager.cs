@@ -66,26 +66,26 @@ public class HubManager : MonoBehaviour
 
     public void NextLevel()
     {
-        if(_kidsKilled > 0)
+        if(_kidsKilled > 2)
         {
             _gameStuff._powerType = PowerType.Rock;
         }
-        if (_kidsKilled > 1)
+        if (_kidsKilled > 5)
         {
             _gameStuff._powerType = PowerType.Fire;
         }
-        if (_kidsKilled > 2)
+        if (_kidsKilled > 10)
         {
             _gameStuff._powerType = PowerType.Thunder;
         }
-        if (_kidsKilled > 3)
-        {
-            _gameStuff._powerType = PowerType.Death;
-        }
-
-        if (_kidsBuried > 0)
+        if (_kidsKilled > 15)
         {
             _gameStuff._powerType = PowerType.Potato;
+        }
+
+        if (_kidsBuried > 3 && _kidsKilled > 9)
+        {
+            _gameStuff._powerType = PowerType.Death;
         }
 
         SceneManager.LoadScene("Fight_Scene");
