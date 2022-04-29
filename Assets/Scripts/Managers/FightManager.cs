@@ -15,6 +15,7 @@ public class FightManager : MonoBehaviour
     private PowerType _resistance;
     private Vector2 _spawnStart;
     [SerializeField] ParticleSystem bloodParticles;
+    [SerializeField] List<ParticleSystem> _listParticles;
 
     private void Awake()
     {
@@ -48,10 +49,27 @@ public class FightManager : MonoBehaviour
     {
         for (int i = _activeEnemies.Count - 1; i > -1; i--)
         {
-            _activeEnemies[i].GetComponent<Enemy>().OnPowerDamage(_damage, 0, _power);
+            StartCoroutine(UpPower(i,_damage,_power));
+            
         }
     }
-
+    IEnumerator UpPower(int i, float _damage, PowerType _power)
+    {
+        switch (_power)
+        {
+            case PowerType.NONE:
+                //instantier les particules none
+                break;
+            case PowerType.Rock:
+                Instantiate(_listParticles[0],GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+                break;
+            case PowerType.Fire:
+                Instantiate(_listParticles[1], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+                break;
+        }
+        yield return new WaitForSeconds(Random.Range(2f, 4f));
+        _activeEnemies[i].GetComponent<Enemy>().OnPowerDamage(_damage, 0, _power);
+    }
     public void Stun(float stunDuration)
     {
         foreach(GameObject enemy in _activeEnemies)
