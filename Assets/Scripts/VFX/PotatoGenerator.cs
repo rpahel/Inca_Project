@@ -20,7 +20,7 @@ public class PotatoGenerator : MonoBehaviour
     IEnumerator Spawn(float i)
     {
         yield return new WaitForSeconds(i * _potatoDelay);
-        Vector2 position = new Vector2(transform.position.x + ((i/(_nbPotato+1))*largeurHauteur[0]),transform.position.y + largeurHauteur[1]);
+        Vector2 position = new Vector2(transform.position.x + ((float)(i/(_nbPotato+1))*largeurHauteur[0]),transform.position.y + largeurHauteur[1]);
         Instantiate(Patate,position,Quaternion.Euler(0,0,0));
     }
     void OnDrawGizmosSelected()

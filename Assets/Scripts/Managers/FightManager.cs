@@ -61,10 +61,10 @@ public class FightManager : MonoBehaviour
                 //instantier les particules none
                 break;
             case PowerType.Rock:
-                Instantiate(_listParticles[0], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
+                Instantiate(_listParticles[1], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.Euler(0, 0, 0));
                 break;
             case PowerType.Fire:
-                Instantiate(_listParticles[1], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.Euler(0,0,0));
+                Instantiate(_listParticles[0], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.Euler(0,0,0));
                 break;
             case PowerType.Death:
                 Instantiate(_listGameObject[0], GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
