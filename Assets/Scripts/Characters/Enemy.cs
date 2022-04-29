@@ -171,6 +171,7 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(StunCd(duration));
         _isStunned = true;
+        _animator.SetBool("isStun", _isStunned);
     }
 
     public void Potato(float duration)
@@ -219,6 +220,7 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(stunDuration);
         _isStunned = false;
+        _animator.SetBool("isStun", _isStunned);
         StopCoroutine(StunCd(stunDuration));
     }
 
