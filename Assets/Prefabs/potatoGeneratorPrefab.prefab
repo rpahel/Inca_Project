@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Patate: {fileID: 2182782347134976771, guid: 6fba6227fa5e0884a8792974de20c0b3, type: 3}
   _potatoDelay: 0.3
-  _nbPotato: 5
-  largeurHauteur: {x: 15, y: 10}
+  _nbPotato: 12
+  largeurHauteur: {x: 30, y: 10}
