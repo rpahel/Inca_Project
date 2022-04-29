@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Potato Up Power
   m_EditorClassIdentifier: 
   _powerType: 5
-  _damage: 250
+  _damage: 125
   _cd: 10
